@@ -9,7 +9,7 @@ set shiftwidth=4
 set noexpandtab
 
 " SYNTAX
-syntax sync ccomment minlines=10 maxlines=500
+syntax sync ccomment
 
 " keywords
 syntax match as3operator /[-><=+*/%{}()\[\]]/
