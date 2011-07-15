@@ -28,6 +28,9 @@ set nobackup
 " don't put double spaces after a period, motherfucker
 set nojoinspaces
 
+" display Gundo preview at bottom, not left
+let g:gundo_preview_bottom = 1
+
 " color scheme
 :colorscheme zenburn
 set t_Co=256
