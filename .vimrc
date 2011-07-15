@@ -41,6 +41,10 @@ if has("gui_running")
     set guioptions=egt
 endif
 
+" don't pop up help on an accidental F1
+nnoremap <F1> <Esc>
+imap <F1> <Esc>
+
 " key mappings
 let mapleader = ","
 map <Leader><Tab> :FufBuffer<CR>
