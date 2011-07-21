@@ -76,7 +76,8 @@ set incsearch		" do incremental searching
 " additional file types
 au BufRead,BufNewFile *.as set filetype=actionscript
 au BufRead,BufNewFile *.djt set filetype=htmldjango
-
+au BufRead,BufNewFile *.txt set wrap
+au BufRead,BufNewFile *.txt set linebreak
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
