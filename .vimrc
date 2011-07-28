@@ -55,6 +55,7 @@ map <Leader>a :Ack --actionscript "
 map <Leader>p :YRShow<CR>
 map <Leader>e :FufFile<CR>
 map <Leader>g :GundoToggle<CR>
+map <Leader>t :TagbarToggle<CR>
 let g:pep8_map='<Leader>8'
 
 :command JSONFormat :%!python -m json.tool
@@ -78,6 +79,20 @@ au BufRead,BufNewFile *.as set filetype=actionscript
 au BufRead,BufNewFile *.djt set filetype=htmldjango
 au BufRead,BufNewFile *.txt set wrap
 au BufRead,BufNewFile *.txt set linebreak
+
+set tags=./tags,tags
+
+" set up Actionscript in Tagbar
+let g:tagbar_type_actionscript = {
+	\ 'ctagstype': 'ActionScript',
+	\ 'kinds' : [
+		\ 'f:functions,methods',
+		\ 'p:properties',
+		\ 'v:variables',
+		\ 'c:classes',
+		\ 'i:{To do}'
+	\ ]
+\ }
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
