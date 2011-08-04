@@ -15,6 +15,9 @@ if !exists("main_syntax")
   let main_syntax = 'html'
 endif
 
+setlocal shiftwidth=2
+setlocal tabstop=2
+
 if version < 600
   so <sfile>:p:h/django.vim
   so <sfile>:p:h/html.vim
