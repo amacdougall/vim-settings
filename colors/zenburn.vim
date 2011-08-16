@@ -218,7 +218,7 @@ hi Macro           guifg=#ffcfaf gui=bold
 hi ModeMsg         guifg=#ffcfaf gui=none
 hi MoreMsg         guifg=#ffffff gui=bold
 hi Number          guifg=#8cd0d3
-hi Operator        guifg=#f0efd0
+hi Operator        guifg=#f0efd0 gui=bold
 hi PreCondit       guifg=#dfaf8f gui=bold
 hi PreProc         guifg=#ffcfaf gui=bold
 hi Question        guifg=#ffffff gui=bold
