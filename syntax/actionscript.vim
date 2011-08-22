@@ -4,6 +4,7 @@
 
 " SYNTAX
 syntax sync ccomment
+syntax sync minlines=50
 
 " keywords
 syntax match as3operator /[-><=+*/%{}()\[\]]/

@@ -74,12 +74,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" additional file types
-au BufRead,BufNewFile *.as set filetype=actionscript
-au BufRead,BufNewFile *.djt set filetype=htmldjango
-au BufRead,BufNewFile *.txt set wrap
-au BufRead,BufNewFile *.txt set linebreak
-
 set tags=./tags,tags
 
 " set up Actionscript in Tagbar
@@ -122,6 +116,12 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+
+  " additional file types
+  au BufRead,BufNewFile *.as set filetype=actionscript
+  au BufRead,BufNewFile *.djt set filetype=htmldjango
+  au BufRead,BufNewFile *.txt set wrap
+  au BufRead,BufNewFile *.txt set linebreak
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
