@@ -2,20 +2,15 @@
 " Language:     actionscript
 " Maintainer:   Alan MacDougall
 
-set foldmethod=indent
-set foldlevel=999 " start with no folds closed
-set tabstop=4
-set shiftwidth=4
-set noexpandtab
-
 " SYNTAX
 syntax sync ccomment
+syntax sync minlines=50
 
 " keywords
 syntax match as3operator /[-><=+*/%{}()\[\]]/
 syntax keyword as3conditional if then else switch ?
 syntax keyword as3keyword public protected internal private static dynamic extends implements override get set var const function class interface package import
-syntax keyword as3actionKeyword new return continue break throw
+syntax keyword as3actionKeyword new return continue break throw delete
 syntax keyword as3loopConstructs for while do in each try catch finally
 syntax keyword as3scalarLiterals null undefined true false Infinity -Infinity NaN
 syntax keyword as3switch case default
