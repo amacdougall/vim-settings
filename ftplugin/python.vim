@@ -5,4 +5,5 @@ setlocal textwidth=80
 setlocal smarttab
 setlocal expandtab
 setlocal nosmartindent " no longer throw # to column 0
+setlocal foldmethod=indent
 let python_highlight_all = 1
