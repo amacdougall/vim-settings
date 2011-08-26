@@ -52,7 +52,7 @@ highlight link as3stringS String
 highlight link as3regexpString String
 highlight link as3typeName Include
 highlight link as3function Function
-highlight link as3propertyLabel Debug
+highlight link as3propertyLabel Type
 
 " keyword highlighting
 highlight link as3keyword Keyword
