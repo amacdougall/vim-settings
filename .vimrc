@@ -64,9 +64,9 @@ map n nzz
 map N Nzz
 let g:pep8_map='<Leader>8'
 
-" save some <Esc> reaching by mapping jj to it; jj is a very uncommon
+" save some <Esc> reaching by mapping kj to it; kj is a very uncommon
 " sequence, and you can always just type it slowly if you need it.
-inoremap jj <Esc>
+inoremap kj <Esc>
 
 :command JSONFormat :%!python -m json.tool
 set foldlevel=20 " no initial folds (TO DO: improve this)
