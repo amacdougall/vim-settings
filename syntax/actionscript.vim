@@ -18,9 +18,10 @@ syntax keyword as3switch case default
 " syntactical elements
 syntax match as3function /\w\+\((\)\@=/
 syntax match as3number /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
-syntax region as3stringD start=/"/ skip=/\\"/ end=/"/
-syntax region as3stringS start=/'/ skip=/\\'/ end=/'/
-syntax region as3RegexpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
+syntax region as3stringD start=/"/ skip=/\\\\\|\\"/ end=/"/
+syntax region as3stringS start=/'/ skip=/\\\\\|\\'/ end=/'/
+syntax match as3special "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
+syntax region as3RegexpString start=+/\(\*\|/\)\@!+ skip=+\\\\\|\\/+ end=+/[gim]\{,3}+ contains=as3Special oneline
 
 syntax match as3propertyLabel /\w\+\(:\s\)\@=/
 
@@ -52,7 +53,7 @@ highlight link as3stringS String
 highlight link as3regexpString String
 highlight link as3typeName Include
 highlight link as3function Function
-highlight link as3propertyLabel Debug
+highlight link as3propertyLabel Type
 
 " keyword highlighting
 highlight link as3keyword Keyword

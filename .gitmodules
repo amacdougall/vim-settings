@@ -36,4 +36,7 @@
 	url = git://github.com/majutsushi/tagbar
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/inkpot"]
+	path = bundle/inkpot
+	url = git@github.com:ciaranm/inkpot.git
