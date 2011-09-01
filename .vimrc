@@ -64,9 +64,9 @@ map n nzz
 map N Nzz
 let g:pep8_map='<Leader>8'
 
-" save some <Esc> reaching by mapping jj to it; jj is a very uncommon
+" save some <Esc> reaching by mapping kj to it; kj is a very uncommon
 " sequence, and you can always just type it slowly if you need it.
-inoremap jj <Esc>
+inoremap kj <Esc>
 
 :command JSONFormat :%!python -m json.tool
 set foldlevel=20 " no initial folds (TO DO: improve this)
@@ -130,8 +130,7 @@ if has("autocmd")
   " additional file types
   au BufRead,BufNewFile *.as set filetype=actionscript
   au BufRead,BufNewFile *.djt set filetype=htmldjango
-  au BufRead,BufNewFile *.txt set wrap
-  au BufRead,BufNewFile *.txt set linebreak
+  au BufRead,BufNewFile *.txt set filetype=text
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
