@@ -21,7 +21,7 @@ syntax match as3number /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syntax region as3stringD start=/"/ skip=/\\\\\|\\"/ end=/"/
 syntax region as3stringS start=/'/ skip=/\\\\\|\\'/ end=/'/
 syntax match as3special "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
-syntax region as3RegexpString start=+/\(\*\|/\)\@!+ skip=+\\\\\|\\/+ end=+/[gim]\{,3}+ contains=as3Special oneline
+syntax region as3regExpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=as3special oneline
 
 syntax match as3propertyLabel /\w\+\(:\s\)\@=/
 
