@@ -7,7 +7,7 @@ syntax sync ccomment
 syntax sync minlines=50
 
 " keywords
-syntax match as3operator /[-><=+*/%{}()\[\]]/
+syntax match as3operator /[-><=+*/%{}()\[\]&|?]/
 syntax keyword as3conditional if then else switch ?
 syntax keyword as3keyword public protected internal private static dynamic extends implements override get set var const function class interface package import
 syntax keyword as3actionKeyword new return continue break throw delete
