@@ -37,6 +37,6 @@
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/inkpot"]
-	path = bundle/inkpot
-	url = git@github.com:ciaranm/inkpot.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
