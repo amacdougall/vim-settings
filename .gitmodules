@@ -40,3 +40,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
+[submodule "bundle/inkpot"]
+	path = bundle/inkpot
+	url = git@github.com:amacdougall/inkpot.git
