@@ -43,3 +43,6 @@
 [submodule "bundle/inkpot"]
 	path = bundle/inkpot
 	url = git@github.com:amacdougall/inkpot.git
+[submodule "bundle/Zenburn"]
+	path = bundle/Zenburn
+	url = git@github.com:amacdougall/Zenburn.git
