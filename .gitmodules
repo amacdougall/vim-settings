@@ -43,3 +43,6 @@
 [submodule "bundle/Zenburn"]
 	path = bundle/Zenburn
 	url = git@github.com:amacdougall/Zenburn.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git@github.com:amacdougall/vim-colors-solarized.git
