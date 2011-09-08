@@ -21,7 +21,7 @@ syntax match as3number /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syntax region as3stringD start=/"/ skip=/\\\\\|\\"/ end=/"/
 syntax region as3stringS start=/'/ skip=/\\\\\|\\'/ end=/'/
 syntax match as3special "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
-syntax region as3regExpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=as3special oneline
+syntax region as3regExpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,3\}\s*$+ end=+/[gim]\{0,3\}\s*[;.,)\]}]+me=e-1 contains=as3special oneline
 
 syntax match as3propertyLabel /\w\+\(:\s\)\@=/
 
@@ -36,13 +36,9 @@ syntax match as3lineComment /\/\{2\}.*$/
 
 
 " HIGHLIGHTING
-" Designed to work with zenburn.vim. Not really a redistributable solution.
-" This is due entirely to the comments -- I defined some extra highlight
-" groups so I could have different colored comments all italicized. Otherwise,
-" this highlighting uses the same (irritating) convention of bending C-centric
-" highlight group names into the service of another language's constructs.
+" (colors files may supercede the links with explicit highlighting)
 
-" comments
+" comments 
 highlight link as3wingComment Comment
 highlight link as3docComment Comment
 highlight link as3lineComment Comment
@@ -65,9 +61,3 @@ highlight link as3operator StorageClass
 highlight link as3scalarLiterals Boolean
 highlight link as3statements Keyword
 highlight link as3switch Label
-
-" TODO: figure out how to integrate this with the color scheme?
-highlight as3docComment guifg=#AABFAA gui=italic
-highlight as3docCommentKeyword guifg=#AABFAA gui=bold
-highlight as3wingComment guifg=#999999 gui=italic
-

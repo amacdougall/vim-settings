@@ -28,11 +28,6 @@ set nobackup
 " don't put double spaces after a period, motherfucker
 set nojoinspaces
 
-" display Gundo preview at bottom, not left
-let g:gundo_preview_bottom = 1
-
-" color scheme
-:colorscheme zenburn
 set t_Co=256
 " highlight line the cursor is on
 set cul
@@ -46,6 +41,10 @@ if has("gui_running")
     set guioptions=egt
 endif
 
+" pathogen.vim loads plugins from .vim/bundle/myPlugin
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " don't pop up help on an accidental F1
 nnoremap <F1> <Esc>
 imap <F1> <Esc>
@@ -58,6 +57,9 @@ map <Leader>p :YRShow<CR>
 map <Leader>e :FufFile<CR>
 map <Leader>g :GundoToggle<CR>
 map <Leader>t :TagbarToggle<CR>
+
+" display Gundo preview at bottom, not left
+let g:gundo_preview_bottom = 1
 
 " center on match when searching
 map n nzz
@@ -75,9 +77,8 @@ abbr dl( Debug.log(
 abbr di( Debug.indent(
 abbr du( Debug.unindent(
 
-" pathogen.vim loads plugins from .vim/bundle/myPlugin
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" color scheme
+:colorscheme zenburn
 
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
