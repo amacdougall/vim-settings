@@ -7,11 +7,12 @@ syntax sync ccomment
 syntax sync minlines=50
 
 " keywords
-syntax match as3operator /[-><=+*/%{}()\[\]&|?]/
+syntax match as3operator /[-><=+*/%{}()\[\]&|?!]/
 syntax keyword as3conditional if then else switch ?
-syntax keyword as3keyword public protected internal private static dynamic extends implements override get set var const function class interface package import
+syntax keyword as3keyword public protected internal private static dynamic extends implements override get set is var const function class interface package import
 syntax keyword as3actionKeyword new return continue break throw delete
-syntax keyword as3loopConstructs for while do in each try catch finally
+syntax match as3loopConstructs /each/ " using match lets us override later
+syntax keyword as3loopConstructs for while do in try catch finally
 syntax keyword as3scalarLiterals null undefined true false Infinity -Infinity NaN
 syntax keyword as3switch case default
 
@@ -25,7 +26,7 @@ syntax region as3regExpString start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\
 
 syntax match as3propertyLabel /\w\+\(:\s\)\@=/
 
-syntax match as3typeName /\(\w\+\|\*\)/ contained
+syntax match as3typeName /\(\w\+\(\.\w\+\)*\|\*\)/ contained
 syntax match as3typeSuffixStart /:/ nextgroup=as3typename
 
 " comments
@@ -57,7 +58,7 @@ highlight link as3actionKeyword PreProc
 highlight link as3loopConstructs Repeat
 highlight link as3number Number
 highlight link as3conditional Conditional
-highlight link as3operator StorageClass
+highlight link as3operator Type
 highlight link as3scalarLiterals Boolean
 highlight link as3statements Keyword
 highlight link as3switch Label
