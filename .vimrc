@@ -131,6 +131,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.as set filetype=actionscript
   au BufRead,BufNewFile *.djt set filetype=htmldjango
   au BufRead,BufNewFile *.txt set filetype=text
+  au BufRead,BufNewFile *.md set filetype=markdown
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
