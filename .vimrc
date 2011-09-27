@@ -52,7 +52,8 @@ imap <F1> <Esc>
 " key mappings
 let mapleader = ","
 map <Leader><Tab> :FufBuffer<CR>
-map <Leader>a :Ack --actionscript "
+map <Leader>aa :Ack --actionscript "
+map <Leader>aj :Ack --js "
 map <Leader>p :YRShow<CR>
 map <Leader>e :FufFile<CR>
 map <Leader>g :GundoToggle<CR>
