@@ -51,13 +51,24 @@ imap <F1> <Esc>
 
 " key mappings
 let mapleader = ","
+
+" file opening/switching
+map <Leader>e :FufFile<CR>
 map <Leader><Tab> :FufBuffer<CR>
+
+" ack searches
 map <Leader>aa :Ack --actionscript "
 map <Leader>aj :Ack --js "
+
+" plugin sidebars
 map <Leader>p :YRShow<CR>
-map <Leader>e :FufFile<CR>
 map <Leader>g :GundoToggle<CR>
 map <Leader>t :TagbarToggle<CR>
+
+" quickfix (usually Ack results) list: close, next, previous
+map <Leader>c :cclose<CR>
+map <Leader>n :cn<CR> zz
+map <Leader>N :cN<CR> zz
 
 " display Gundo preview at bottom, not left
 let g:gundo_preview_bottom = 1
