@@ -13,6 +13,11 @@
 
 " ============================================================================
 
+" Give up immediately when PeepOpen is not available
+if !has("gui_macvim")
+  finish
+endif
+
 " Exit quickly when:
 " - this plugin was already loaded (or disabled)
 " - when 'compatible' is set
