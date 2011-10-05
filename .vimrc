@@ -49,7 +49,7 @@ call pathogen#helptags()
 nnoremap <F1> <Esc>
 imap <F1> <Esc>
 
-" key mappings
+" key mappings (leave <Leader>p free for PeepOpen on OSX)
 let mapleader = ","
 
 " file opening/switching
@@ -59,9 +59,10 @@ map <Leader><Tab> :FufBuffer<CR>
 " ack searches
 map <Leader>aa :Ack --actionscript "
 map <Leader>aj :Ack --js "
+map <Leader>ar :Ack --ruby "
 
 " plugin sidebars
-map <Leader>p :YRShow<CR>
+map <Leader>y :YRShow<CR>
 map <Leader>g :GundoToggle<CR>
 map <Leader>t :TagbarToggle<CR>
 
