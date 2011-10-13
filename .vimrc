@@ -47,36 +47,36 @@ call pathogen#helptags()
 
 " don't pop up help on an accidental F1
 nnoremap <F1> <Esc>
-imap <F1> <Esc>
+inoremap <F1> <Esc>
 
 " key mappings (leave <Leader>p free for PeepOpen on OSX)
 let mapleader = ","
 
 " file opening/switching
-map <Leader>e :FufFile<CR>
-map <Leader><Tab> :FufBuffer<CR>
+noremap <Leader>e :FufFile<CR>
+noremap <Leader><Tab> :FufBuffer<CR>
 
 " ack searches
-map <Leader>aa :Ack --actionscript "
-map <Leader>aj :Ack --js "
-map <Leader>ar :Ack --ruby "
+noremap <Leader>aa :Ack --actionscript "
+noremap <Leader>aj :Ack --js "
+noremap <Leader>ar :Ack --ruby "
 
 " plugin sidebars
-map <Leader>y :YRShow<CR>
-map <Leader>g :GundoToggle<CR>
-map <Leader>t :TagbarToggle<CR>
+noremap <Leader>y :YRShow<CR>
+noremap <Leader>g :GundoToggle<CR>
+noremap <Leader>t :TagbarToggle<CR>
 
 " quickfix (usually Ack results) list: close, next, previous
-map <Leader>c :cclose<CR>
-map <Leader>n :cn<CR> zz
-map <Leader>N :cN<CR> zz
+noremap <Leader>c :cclose<CR>
+noremap <Leader>n :cn<CR> zz
+noremap <Leader>N :cN<CR> zz
 
 " display Gundo preview at bottom, not left
 let g:gundo_preview_bottom = 1
 
 " center on match when searching
-map n nzz
-map N Nzz
+noremap n nzz
+noremap N Nzz
 let g:pep8_map='<Leader>8'
 
 " save some <Esc> reaching by mapping kj to it; kj is a very uncommon
@@ -116,7 +116,7 @@ let g:tagbar_type_actionscript = {
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+noremap Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -179,4 +179,3 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
-
