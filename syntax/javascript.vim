@@ -8,6 +8,8 @@
 "		(ss) fixed regex parsing issue with multiple qualifiers [gi]
 "		(ss) additional factoring of keywords, globals, and members
 " Last Change:	2010 Mar 25
+"
+" Customized:   2011 Oct 13 <Alan MacDougall>alan@paperlesspost.com
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -30,6 +32,7 @@ endif
 
 
 syn match   javaScriptFunction         /\w\+\((\)\@=/
+syn match   javaScriptNumber	        /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
 syn match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCommentTodo
 syn match   javaScriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
@@ -39,7 +42,6 @@ syn region  javaScriptStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	con
 syn region  javaScriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javaScriptSpecial,@htmlPreproc
 
 syn match   javaScriptSpecialCharacter "'\\.'"
-syn match   javaScriptNumber	       "-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>"
 syn region  javaScriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
 syn match   javaScriptPropertyLabel     /\w\+\(:\s\)\@=/
@@ -56,7 +58,7 @@ syn keyword javaScriptIdentifier	arguments this var let
 syn keyword javaScriptLabel		case default
 syn keyword javaScriptException		try catch finally throw
 syn keyword javaScriptMessage		alert confirm prompt status
-syn keyword javaScriptGlobal		self window top parent
+syn keyword javaScriptGlobal		self window parent
 syn keyword javaScriptMember		document event location 
 syn keyword javaScriptDeprecated	escape unescape
 syn keyword javaScriptReserved		abstract boolean byte char class const debugger double enum export extends final float goto implements import int interface long native package private protected public short static super synchronized throws transient volatile 
@@ -101,7 +103,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptStringD		String
   HiLink javaScriptCharacter		Character
   HiLink javaScriptSpecialCharacter	javaScriptSpecial
-  HiLink javaScriptNumber		javaScriptValue
+  HiLink javaScriptNumber		Number
   HiLink javaScriptConditional		Conditional
   HiLink javaScriptRepeat		Repeat
   HiLink javaScriptBranch		Conditional

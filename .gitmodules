@@ -49,3 +49,6 @@
 [submodule "bundle/Birds-of-Paradise-VIM-Theme"]
 	path = bundle/Birds-of-Paradise-VIM-Theme
 	url = git@github.com:amacdougall/Birds-of-Paradise-VIM-Theme
+[submodule "bundle/vim-indent-object"]
+	path = bundle/vim-indent-object
+	url = git@github.com:michaeljsmith/vim-indent-object.git
