@@ -30,9 +30,9 @@ syntax match as3typeName /\(\w\+\(\.\w\+\)*\|\*\)/ contained
 syntax match as3typeSuffixStart /:/ nextgroup=as3typename
 
 " comments
-syntax region as3wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\//
-syntax region as3docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=as3docCommentKeyword
-syntax match as3docCommentKeyword /@\w\+/
+syntax region wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\//
+syntax region docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=docCommentKeyword
+syntax match  docCommentKeyword /@\w\+/
 syntax match as3lineComment /\/\{2\}.*$/
 
 

@@ -36,7 +36,9 @@ syn match   javaScriptNumber	        /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
 syn match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCommentTodo
 syn match   javaScriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
-syn region  javaScriptComment	       start="/\*"  end="\*/" contains=@Spell,javaScriptCommentTodo
+syn region  wingComment	               start="/\*\{1\}"  end="\*/" contains=@Spell,javaScriptCommentTodo
+syn region  docComment                 start="/\*\{2\}"  end="\*/" contains=@Spell,javaScriptCommentTodo,docCommentKeyword
+syn match   docCommentKeyword /@\w\+/
 syn match   javaScriptSpecial	       "\\\d\d\d\|\\."
 syn region  javaScriptStringD	       start=+"+  skip=+\\\\\|\\"+  end=+"\|$+	contains=javaScriptSpecial,@htmlPreproc
 syn region  javaScriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	contains=javaScriptSpecial,@htmlPreproc
@@ -95,7 +97,12 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
-  HiLink javaScriptComment		Comment
+  "
+  " colors files may supercede these links
+  HiLink wingComment		        Comment
+  HiLink docComment                     Comment
+  HiLink docCommentKeyword              Comment
+
   HiLink javaScriptLineComment		Comment
   HiLink javaScriptCommentTodo		Todo
   HiLink javaScriptSpecial		Special
