@@ -36,19 +36,19 @@
 	url = git://github.com/majutsushi/tagbar
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
-	url = git@github.com:tpope/vim-repeat.git
+	url = git://github.com/tpope/vim-repeat.git
 [submodule "bundle/Zenburn"]
 	path = bundle/Zenburn
-	url = git@github.com:amacdougall/Zenburn.git
+	url = git://github.com/amacdougall/Zenburn.git
 [submodule "bundle/inkpot"]
 	path = bundle/inkpot
-	url = git@github.com:amacdougall/inkpot.git
+	url = git://github.com/amacdougall/inkpot.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
-	url = git@github.com:amacdougall/vim-colors-solarized
+	url = git://github.com/amacdougall/vim-colors-solarized
 [submodule "bundle/Birds-of-Paradise-VIM-Theme"]
 	path = bundle/Birds-of-Paradise-VIM-Theme
-	url = git@github.com:amacdougall/Birds-of-Paradise-VIM-Theme
+	url = git://github.com/amacdougall/Birds-of-Paradise-VIM-Theme
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
-	url = git@github.com:michaeljsmith/vim-indent-object.git
+	url = git://github.com/michaeljsmith/vim-indent-object.git
