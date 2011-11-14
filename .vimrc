@@ -32,10 +32,10 @@ set t_Co=256
 " highlight line the cursor is on
 set cul
 
-" tab/space settings for all files
+" use tabs instead of spaces
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
-set expandtab
 
 if has("gui_running")
     set guioptions=egt
@@ -84,6 +84,7 @@ let g:pep8_map='<Leader>8'
 inoremap kj <Esc>
 
 :command JSONFormat :%!python -m json.tool
+
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
 abbr dl( Debug.log(
@@ -153,6 +154,9 @@ if has("autocmd")
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
+
+  " When reading an Actionscript file, always convert indentation spaces to tabs.
+  au BufReadPost *.as retab!
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
