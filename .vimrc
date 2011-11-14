@@ -83,7 +83,7 @@ let g:pep8_map='<Leader>8'
 " sequence, and you can always just type it slowly if you need it.
 inoremap kj <Esc>
 
-:command JSONFormat :%!python -m json.tool
+:command JSONFormat :%!python -m json.tool | :set filetype=javascript
 
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
