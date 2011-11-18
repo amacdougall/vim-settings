@@ -22,7 +22,7 @@ if !exists("g:js_indent_log")
 endif
 
 setlocal indentexpr=GetJsIndent(v:lnum)
-setlocal indentkeys=
+setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=*/
 
 
 setlocal cindent
@@ -232,8 +232,6 @@ function! s:Log(msg)
 		echom "LOG: " . a:msg
 	endif
 endfunction
-
-call s:Log("Testing log function")
 
 " 3. Indenter
 " ===========
