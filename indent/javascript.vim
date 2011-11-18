@@ -8,14 +8,17 @@
 
 " Only load one indent script per buffer
 if exists('b:did_indent')
+	echom "buffer already has indent settings"
   finish
 endif
 
 let b:did_indent = 1
 
+echom "running indent settings"
+
 " Set the global log variable 1 = logging enabled, 0 = logging disabled
 if !exists("g:js_indent_log")
-	let g:js_indent_log = 0
+	let g:js_indent_log = 1
 endif
 
 setlocal indentexpr=GetJsIndent(v:lnum)
@@ -226,14 +229,17 @@ endfunction
 " Logs a message to the stdout.
 function! s:Log(msg)
 	if g:js_indent_log
-		echo "LOG: " . a:msg
+		echom "LOG: " . a:msg
 	endif
 endfunction
 
+call s:Log("Testing log function")
 
 " 3. Indenter
 " ===========
 function! GetJsIndent(lnum)
+	echom "GetJsIndent()"
+	call s:Log("GetJsIndent()")
 	" Grab the first non-comment line prior to this line
 	let pnum = s:GetNonCommentLine(a:lnum-1)
 
