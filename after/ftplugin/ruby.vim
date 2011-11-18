@@ -6,6 +6,11 @@
 " Release Coordinator:  Doug Kearns <dougkearns@gmail.com>
 " ----------------------------------------------------------------------------
 
+" amacdougall-specific settings
+set expandtab
+set shiftwidth=2
+set tabstop=2
+
 if (exists("b:did_ftplugin"))
   finish
 endif
