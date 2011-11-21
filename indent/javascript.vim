@@ -21,7 +21,6 @@ endif
 setlocal indentexpr=GetJsIndent(v:lnum)
 setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=*/
 
-
 setlocal cindent
 setlocal autoindent
 
@@ -226,7 +225,7 @@ endfunction
 " Logs a message to the stdout.
 function! s:Log(msg)
 	if g:js_indent_log
-		echo "LOG: " . a:msg
+		echom "LOG: " . a:msg
 	endif
 endfunction
 
@@ -261,14 +260,14 @@ function! GetJsIndent(lnum)
 	" Handle: Object Closers (ie }) 
 	" =============================
 	if s:IsObjectEnd(line) && !s:IsComment(a:lnum)
-		call s:Log("Line matched object end")
-
 		let obeg = s:GetObjectBeg(a:lnum)
 		let oind = indent(obeg)
 		let oline = getline(obeg)
 
-		call s:Log("The object beg was found at: " . obeg)
-		return oind
+		" hack: GetObjectBeg is getting beginning line of enclosing object,
+		" not the object we're currently closing; adding a shiftwidth is a
+		" quick fix -- amacdougall
+		return oind + &sw
 	endif
 
 	if s:IsObjectBeg(pline) 
