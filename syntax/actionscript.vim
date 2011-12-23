@@ -33,16 +33,17 @@ syntax match as3typeSuffixStart /:/ nextgroup=as3typename
 syntax region wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\//
 syntax region docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=docCommentKeyword
 syntax match  docCommentKeyword /@\w\+/
-syntax match as3lineComment /\/\{2\}.*$/
+syntax match lineComment /\/\{2\}.*$/
 
 
 " HIGHLIGHTING
 " (colors files may supercede the links with explicit highlighting)
 
 " comments 
-highlight link as3wingComment Comment
-highlight link as3docComment Comment
-highlight link as3lineComment Comment
+highlight link wingComment Comment
+highlight link docComment Comment
+highlight link docCommentKeyword Comment
+highlight link lineComment Comment
 
 " context highlighting
 highlight link as3stringD String
