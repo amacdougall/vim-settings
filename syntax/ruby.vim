@@ -329,7 +329,7 @@ hi def link rubyInstanceVariable	rubyIdentifier
 hi def link rubyPredefinedIdentifier	rubyIdentifier
 hi def link rubyPredefinedConstant	rubyPredefinedIdentifier
 hi def link rubyPredefinedVariable	rubyPredefinedIdentifier
-hi def link rubySymbol			Constant
+hi link rubySymbol			Constant
 hi def link rubyKeyword			Keyword
 hi def link rubyOperator		Operator
 hi def link rubyBeginEnd		Statement
