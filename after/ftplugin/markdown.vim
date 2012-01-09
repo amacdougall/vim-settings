@@ -3,6 +3,10 @@
 set nowrap
 set linebreak
 set textwidth=80
+set expandtab
+
+set shiftwidth=4
+set tabstop=4
 
 abb <buffer> mdash &#8212
 abb <buffer> ndash &#8211
