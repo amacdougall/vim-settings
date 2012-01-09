@@ -55,3 +55,6 @@
 [submodule "bundle/jellybeans.vim"]
 	path = bundle/jellybeans.vim
 	url = git://github.com/amacdougall/jellybeans.vim.git
+[submodule "bundle/vim-pasta"]
+	path = bundle/vim-pasta
+	url = git://github.com/sickill/vim-pasta.git
