@@ -13,6 +13,7 @@ set nobackup
 
 " seriously, these aren't defaults?
 set nowrap
+set textwidth=0
 set autoindent
 set smartindent
 
