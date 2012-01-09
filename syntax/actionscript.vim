@@ -9,7 +9,7 @@ syntax sync minlines=50
 " keywords
 syntax match as3operator /[-><=+*/%{}()\[\]&|?!]/
 syntax keyword as3conditional if then else switch ?
-syntax keyword as3keyword public protected internal private static dynamic extends implements override get set is var const function class interface package import
+syntax keyword as3keyword this public protected internal private static dynamic extends implements override get set is var const function class interface package import
 syntax keyword as3actionKeyword new return continue break throw delete
 syntax match as3loopConstructs /each/ " using match lets us override later
 syntax keyword as3loopConstructs for while do in try catch finally
@@ -30,10 +30,11 @@ syntax match as3typeName /\(\w\+\(\.\w\+\)*\|\*\)/ contained
 syntax match as3typeSuffixStart /:/ nextgroup=as3typename
 
 " comments
-syntax region wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\//
-syntax region docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=docCommentKeyword
-syntax match  docCommentKeyword /@\w\+/
-syntax match lineComment /\/\{2\}.*$/
+syntax region wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\// contains=Todo
+syntax region docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=docCommentKeyword,Todo
+syntax match docCommentKeyword /@\w\+/
+syntax match lineComment /\/\{2\}.*$/ contains=Todo
+syn keyword Todo TODO contained
 
 
 " HIGHLIGHTING
