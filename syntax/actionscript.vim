@@ -29,6 +29,9 @@ syntax match as3propertyLabel /\w\+\(:\s\)\@=/
 syntax match as3typeName /\(\w\+\(\.\w\+\)*\|\*\)/ contained
 syntax match as3typeSuffixStart /:/ nextgroup=as3typename
 
+syntax match as3annotation /^\s*\[\w\+]\s*$/ contains=as3annotationText
+syntax match as3annotationText /\w\+/ contained
+
 " comments
 syntax region wingComment start=/\/\*\{1\}/ skip=/\/\{2\}/ end=/\*\// contains=Todo
 syntax region docComment start=/\/\*\{2\}/ skip=/\/\{2\}/ end=/\*\// contains=docCommentKeyword,Todo
@@ -47,6 +50,9 @@ highlight link docCommentKeyword Comment
 highlight link lineComment Comment
 
 " context highlighting
+highlight link as3annotation Type
+highlight link as3annotationText Function
+
 highlight link as3stringD String
 highlight link as3stringS String
 highlight link as3regexpString String
