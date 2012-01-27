@@ -99,6 +99,6 @@ highlight Union               guifg=#eeeeee ctermfg=255                         
 highlight VertSplit           guifg=#000000 ctermfg=0   guibg=#999999 ctermbg=246 gui=none cterm=none
 highlight Visual              guibg=#022913 ctermbg=41                            gui=none cterm=none
 highlight VisualNOS           guifg=#eeeeee ctermfg=255                           gui=bold,underline cterm=bold,underline
-highlight WarningMsg          guifg=#ff0000 ctermfg=196 guibg=#f8f8ff ctermbg=189 gui=bold cterm=bold
+highlight WarningMsg          guifg=#333333 ctermfg=11  guibg=#A3CCA3 ctermbg=74  gui=bold cterm=bold
 highlight WildMenu            guifg=#000000 ctermfg=0   guibg=#7fff00 ctermbg=118 gui=bold cterm=bold
 highlight pythonBuiltin       guifg=#99aa99 ctermfg=108                           gui=none cterm=none
