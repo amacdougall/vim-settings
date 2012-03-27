@@ -77,9 +77,14 @@ noremap <Leader>N :cN<CR> zz
 " display Gundo preview at bottom, not left
 let g:gundo_preview_bottom = 1
 
+" toggle relative line numbers
+noremap <Leader>r :set rnu!<CR>
+
 " center on match when searching
 noremap n nzz
 noremap N Nzz
+
+" set PEP8 compliance check mapping
 let g:pep8_map='<Leader>8'
 
 " save some <Esc> reaching by mapping kj to it; kj is a very uncommon
