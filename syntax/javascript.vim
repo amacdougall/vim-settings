@@ -114,7 +114,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptConditional		Conditional
   HiLink javaScriptRepeat		Repeat
   HiLink javaScriptBranch		Conditional
-  HiLink javaScriptOperator		Operator
+  HiLink javaScriptOperator		PreProc
   HiLink javaScriptType			Type
   HiLink javaScriptStatement		Statement
   HiLink javaScriptFunction		Function
