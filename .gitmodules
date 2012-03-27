@@ -61,3 +61,6 @@
 [submodule "bundle/badwolf"]
 	path = bundle/badwolf
 	url = git://github.com/amacdougall/badwolf.git
+[submodule "bundle/vim-slime"]
+	path = bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
