@@ -74,6 +74,9 @@ noremap <Leader>c :cclose<CR>
 noremap <Leader>n :cn<CR> zz
 noremap <Leader>N :cN<CR> zz
 
+" let vim-slime use tmux instead of GNU screen
+let g:slime_target = "tmux"
+
 " display Gundo preview at bottom, not left
 let g:gundo_preview_bottom = 1
 
@@ -85,7 +88,7 @@ noremap n nzz
 noremap N Nzz
 
 " set PEP8 compliance check mapping
-let g:pep8_map='<Leader>8'
+let g:pep8_map="<Leader>8"
 
 " save some <Esc> reaching by mapping kj to it; kj is a very uncommon
 " sequence, and you can always just type it slowly if you need it.
