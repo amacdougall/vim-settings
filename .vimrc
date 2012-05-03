@@ -17,7 +17,6 @@ set directory=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
 set nowrap
 set textwidth=0
 set autoindent
-set smartindent
 
 set incsearch
 set nohlsearch
