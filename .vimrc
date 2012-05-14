@@ -90,6 +90,9 @@ noremap N Nzz
 " set PEP8 compliance check mapping
 let g:pep8_map="<Leader>8"
 
+" set up Syntastic jsHint configuration
+let g:syntastic_javascript_jshint_conf = "~/.jshintrc"
+
 " save some <Esc> reaching by mapping kj to it; kj is a very uncommon
 " sequence, and you can always just type it slowly if you need it.
 inoremap kj <Esc>
