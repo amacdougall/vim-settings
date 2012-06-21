@@ -58,7 +58,7 @@ highlight Macro               guifg=#8db6cd ctermfg=74                          
 highlight MatchParen          guifg=#eeeeee ctermfg=255                           gui=none cterm=none
 highlight ModeMsg             guifg=#90ee90 ctermfg=114 guibg=#006400 ctermbg=22  gui=none cterm=none
 highlight MoreMsg             guifg=#2e8b57 ctermfg=72                            gui=bold cterm=bold
-highlight NonText             guifg=#3d5d6d ctermfg=74  guibg=#000800 ctermbg=22  gui=none cterm=none
+highlight NonText             guifg=#3d5d6d ctermfg=74  guibg=#001800 ctermbg=22  gui=none cterm=none
 highlight Normal              guifg=#99aa99 ctermfg=108 guibg=#001800 ctermbg=22  gui=none cterm=none
 highlight Number              guifg=#0486b5 ctermfg=37                            gui=none cterm=none
 highlight Operator            guifg=#60a360 ctermfg=71                            gui=bold cterm=bold
