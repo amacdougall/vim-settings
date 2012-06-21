@@ -57,6 +57,7 @@ let mapleader = ","
 " file opening/switching
 noremap <Leader>e :FufFile<CR>
 noremap <Leader><Tab> :FufBuffer<CR>
+noremap <Leader>fr :FufRenewCache<CR>
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
