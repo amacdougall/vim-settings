@@ -10,8 +10,6 @@ set hidden
 
 " between swap files and git, *~ backups haven't been needed
 set nobackup
-" store swap files in their own directory
-set directory=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
 
 " seriously, these aren't defaults?
 set nowrap
