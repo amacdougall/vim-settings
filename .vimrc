@@ -78,6 +78,9 @@ let g:slime_target = "tmux"
 " display Gundo preview at bottom, not left
 let g:gundo_preview_bottom = 1
 
+" disable Yankring zap keys
+let g:yankring_zap_keys = ''
+
 " toggle relative line numbers
 noremap <Leader>r :set rnu!<CR>
 
@@ -103,8 +106,10 @@ abbr dl( Debug.log(
 abbr di( Debug.indent(
 abbr du( Debug.unindent(
 
-" color scheme
-:colorscheme zenburn
+if !has("gui_running")
+  " color scheme
+  :colorscheme zenburn
+endif
 
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
