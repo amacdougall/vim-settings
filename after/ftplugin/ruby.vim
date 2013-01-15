@@ -12,9 +12,20 @@ set shiftwidth=2
 set tabstop=2
 set fo=qn
 
+
+" amacdougall SQL heredoc highlighting
+let s:bcs = b:current_syntax
+unlet b:current_syntax
+syntax include @SQL syntax/sql.vim
+let b:current_syntax = s:bcs
+" match optional, surrounding single or double quote and any whitespace in the heredoc name
+syntax region rubyHereDocSQL matchgroup=Statement start=+<<-SQL\s*+ end=+\s*SQL$+ contains=@SQL
+" end
+
 if (exists("b:did_ftplugin"))
   finish
 endif
+
 let b:did_ftplugin = 1
 
 let s:cpo_save = &cpo
