@@ -73,3 +73,6 @@
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/vim-pyte"]
+	path = bundle/vim-pyte
+	url = git@github.com:amacdougall/vim-pyte.git
