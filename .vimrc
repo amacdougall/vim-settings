@@ -166,6 +166,8 @@ if has("autocmd")
   au BufRead,BufNewFile *.md set filetype=markdown " instead of Modula3!
   au BufRead,BufNewFile *.coffee set filetype=coffee
   au BufRead,BufNewFile *.jinja2 set filetype=jinja
+  au BufRead,BufNewFile Gemfile* set filetype=ruby
+  au BufRead,BufNewFile Guardfile set filetype=ruby
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
