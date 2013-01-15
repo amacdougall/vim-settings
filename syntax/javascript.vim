@@ -46,7 +46,7 @@ syn region  javaScriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	con
 syn match   javaScriptSpecialCharacter "'\\.'"
 syn region  javaScriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
-syn match   javaScriptPropertyLabel     /\w\+\(:\s\)\@=/
+syn match   javaScriptPropertyLabel     /\w\+\(:\(\s\|\n\)\)\@=/
 
 syn keyword javaScriptConditional	if else switch
 syn keyword javaScriptRepeat		while for do in
