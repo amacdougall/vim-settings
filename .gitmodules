@@ -76,3 +76,6 @@
 [submodule "bundle/vim-pyte"]
 	path = bundle/vim-pyte
 	url = git@github.com:amacdougall/vim-pyte.git
+[submodule "bundle/vimclojure"]
+	path = bundle/vimclojure
+	url = git://github.com/vim-scripts/VimClojure.git
