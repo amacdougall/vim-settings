@@ -32,7 +32,8 @@ endif
 
 
 syn match   javaScriptFunction         /\w\+\((\)\@=/
-syn match   javaScriptNumber	        /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
+syn match   javaScriptPrototypeMethod  /\<\u\w\+\..\+\( \== \=function\)\@=/
+syn match   javaScriptNumber	       /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
 syn match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCommentTodo
 syn match   javaScriptCommentSkip      "^[ \t]*\*\($\|[ \t]\+\)"
@@ -59,7 +60,6 @@ syn keyword javaScriptNull		null undefined
 syn keyword javaScriptIdentifier	arguments this let
 syn keyword javaScriptLabel		case default
 syn keyword javaScriptException		try catch finally throw
-syn keyword javaScriptMessage		alert confirm prompt status
 syn keyword javaScriptGlobal		self window
 syn keyword javaScriptMember		document location 
 syn keyword javaScriptDeprecated	escape unescape
@@ -118,6 +118,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptType			Type
   HiLink javaScriptStatement		Statement
   HiLink javaScriptFunction		Function
+  HiLink javaScriptPrototypeMethod      Type
   HiLink javaScriptBraces		Function
   HiLink javaScriptError		Error
   HiLink javaScrParenError		javaScriptError
