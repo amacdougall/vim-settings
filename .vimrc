@@ -168,6 +168,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.jinja2 set filetype=jinja
   au BufRead,BufNewFile Gemfile* set filetype=ruby
   au BufRead,BufNewFile Guardfile set filetype=ruby
+  au BufRead,BufNewFile *.clj set filetype=clojure
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
