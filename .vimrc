@@ -72,6 +72,12 @@ noremap <Leader>c :cclose<CR>
 noremap <Leader>n :cn<CR> zz
 noremap <Leader>N :cN<CR> zz
 
+" Syntastic results open, close, next, previous (actually the location list)
+noremap <Leader>so :Errors<CR>
+noremap <Leader>sc :lclose<CR>
+noremap <Leader>sn :lnext<CR>
+noremap <Leader>sN :lNext<CR>
+
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
 
@@ -102,6 +108,7 @@ inoremap kj <Esc>
 
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
+abbr cl( console.log(
 abbr dl( Debug.log(
 abbr di( Debug.indent(
 abbr du( Debug.unindent(
