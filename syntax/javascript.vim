@@ -32,7 +32,9 @@ endif
 
 
 syn match   javaScriptFunction         /\w\+\((\)\@=/
-syn match   javaScriptPrototypeMethod  /\<\u\w\+\..\+\( \== \=function\)\@=/
+" syn match   javaScriptPrototypeMethod  /\<\u\w\+\..\+\( \== \=function\)\@=/
+syn match   javaScriptPrototypeProperty  /\<\u\w\+\..\+\( \== \=\(_(\)\=function\)\@=/
+syn match   javaScriptPrototypeProperty  /\<\u\w\+\.\(\u\|_\)\+\( \== \=\)\@=/
 syn match   javaScriptNumber	       /-\=\<\d\+L\=\>\|0[xX][0-9a-fA-F]\+\>/
 syn keyword javaScriptCommentTodo      TODO FIXME XXX TBD contained
 syn match   javaScriptLineComment      "\/\/.*" contains=@Spell,javaScriptCommentTodo
@@ -47,7 +49,7 @@ syn region  javaScriptStringS	       start=+'+  skip=+\\\\\|\\'+  end=+'\|$+	con
 syn match   javaScriptSpecialCharacter "'\\.'"
 syn region  javaScriptRegexpString     start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gi]\{0,2\}\s*$+ end=+/[gi]\{0,2\}\s*[;.,)\]}]+me=e-1 contains=@htmlPreproc oneline
 
-syn match   javaScriptPropertyLabel     /\w\+\(:\(\s\|\n\)\)\@=/
+syn match   javaScriptPropertyLabel     /\w\+\(:\(\s\|\n\)\=\)\@=/
 
 syn keyword javaScriptConditional	if else switch
 syn keyword javaScriptRepeat		while for do in
@@ -118,7 +120,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptType			Type
   HiLink javaScriptStatement		Statement
   HiLink javaScriptFunction		Function
-  HiLink javaScriptPrototypeMethod      Type
+  HiLink javaScriptPrototypeProperty    Type
   HiLink javaScriptBraces		Function
   HiLink javaScriptError		Error
   HiLink javaScrParenError		javaScriptError
