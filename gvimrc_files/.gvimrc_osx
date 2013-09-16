@@ -2,9 +2,7 @@ set guifont=Consolas:h14
 
 set columns=300
 set lines=80
-:vsplit
-:TagbarToggle
 
 " set up huge-screen toggle for 27" iMac
-noremap <leader>bi o:set guifont=Consolas:h36<CR>
-noremap <leader>sm :set guifont=Consolas:h14<CR>:set columns=318<CR>:set lines=84<CR>:TagbarToggle<CR>:vsplit<CR>l
+noremap <leader>bi :only<CR>:set guifont=Consolas:h36<CR>
+noremap <leader>sm :set guifont=Consolas:h14<CR>:set columns=318<CR>:set lines=84<CR>:vsplit<CR>
