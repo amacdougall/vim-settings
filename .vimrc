@@ -106,6 +106,9 @@ inoremap kj <Esc>
 
 :command! JSONFormat :execute ':%!python -m json.tool' | set filetype=javascript
 
+" Useful when adding require lines to JS viewport code.
+:command! -nargs=1 RequireJS :read !require <args> %
+
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
 abbr cl( console.log(
