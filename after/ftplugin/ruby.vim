@@ -13,13 +13,22 @@ set tabstop=2
 set fo=qn
 
 
-" amacdougall SQL heredoc highlighting
+" amacdougall heredoc highlighting
+" SQL
 let s:bcs = b:current_syntax
 unlet b:current_syntax
 syntax include @SQL syntax/sql.vim
 let b:current_syntax = s:bcs
 " match optional, surrounding single or double quote and any whitespace in the heredoc name
 syntax region rubyHereDocSQL matchgroup=Statement start=+<<-SQL\s*+ end=+\s*SQL$+ contains=@SQL
+
+" JavaScript
+let s:bcs = b:current_syntax
+unlet b:current_syntax
+syntax include @JS syntax/javascript.vim
+let b:current_syntax = s:bcs
+" match optional, surrounding single or double quote and any whitespace in the heredoc name
+syntax region rubyHereDocJavaScript matchgroup=Statement start=+<<-JAVASCRIPT\s*+ end=+\s*JAVASCRIPT$+ contains=@JS
 " end
 
 if (exists("b:did_ftplugin"))
