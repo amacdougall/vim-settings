@@ -116,7 +116,8 @@ syntax region clojureRegexp start=/\#"/ skip=/\\\\\|\\"/ end=/"/ contains=@cloju
 
 syntax keyword clojureCommentTodo contained FIXME XXX TODO FIXME: XXX: TODO:
 
-syntax match clojureComment ";.*$" contains=clojureCommentTodo,@Spell
+syntax match clojureComment ";[^;].*$" contains=clojureCommentTodo,@Spell
+syntax match clojureDocComment ";;.*$" contains=clojureCommentTodo,@Spell
 syntax match clojureComment "#!.*$"
 
 syntax region clojureSexp   matchgroup=clojureParen start="("  matchgroup=clojureParen end=")"  contains=TOP,@Spell
@@ -172,6 +173,7 @@ highlight link clojureAnonArg   SpecialChar
 highlight link clojureDispatch  SpecialChar
 
 highlight link clojureComment     Comment
+highlight link clojureDocComment  docComment
 highlight link clojureCommentTodo Todo
 
 highlight link clojureError     Error
