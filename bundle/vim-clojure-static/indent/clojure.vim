@@ -379,12 +379,16 @@ setlocal lispwords+=while
 setlocal lispwords+=->
 setlocal lispwords+=->>
 
-" Enfocus
-setlocal lispwords+=at
-setlocal lispwords+=clone-for
+" Om
+setlocal lispwords+=om/
+setlocal lispwords+=dom/
 
 " Exception handling
 setlocal lispwords+=catch
+
+" Test systems
+setlocal lispwords+=describe
+setlocal lispwords+=it
 
 let &cpo = s:save_cpo
 unlet! s:save_cpo

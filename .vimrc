@@ -61,6 +61,7 @@ noremap <Leader>fr :FufRenewCache<CR>
 noremap <Leader>aa :Ack --actionscript "
 noremap <Leader>aj :Ack --js "
 noremap <Leader>ar :Ack --ruby "
+noremap <Leader>ac :Ack --clojure "
 
 " plugin sidebars
 noremap <Leader>y :YRShow<CR>
