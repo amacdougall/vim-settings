@@ -178,7 +178,7 @@ highlight link clojureCommentTodo Todo
 
 highlight link clojureError     Error
 
-highlight link clojureParen     Delimiter
+highlight link clojureParen     Typedef
 
 let b:current_syntax = "clojure"
 
