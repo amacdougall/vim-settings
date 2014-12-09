@@ -5,3 +5,6 @@ set foldlevel=999
 set expandtab
 set formatoptions=qn
 set smartindent
+
+" check syntax on lines of up to 500 characters
+set synmaxcol=500
