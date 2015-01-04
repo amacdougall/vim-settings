@@ -8,6 +8,9 @@ set backspace=indent,eol,start
 " simplify buffer editing by allowing hidden unsaved buffers
 set hidden
 
+" always show status line
+set laststatus=2
+
 " between swap files and git, *~ backups haven't been needed
 set nobackup
 
