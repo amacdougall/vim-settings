@@ -98,9 +98,6 @@ noremap <Leader>r :set rnu!<CR>
 noremap n nzz
 noremap N Nzz
 
-" set PEP8 compliance check mapping
-let g:pep8_map="<Leader>8"
-
 " set up Syntastic jsHint configuration
 let g:syntastic_javascript_checkers = ['jsxhint'] " if array, runs ALL in order
 let g:syntastic_javascript_jshint_conf = "~/.jshintrc"
