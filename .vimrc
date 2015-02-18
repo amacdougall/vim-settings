@@ -106,6 +106,10 @@ let g:syntastic_javascript_checkers = ['jsxhint'] " if array, runs ALL in order
 let g:syntastic_javascript_jshint_conf = "~/.jshintrc"
 " let g:syntastic_javascript_jsxhint_conf = "~/.jshintrc"
 
+" paredit config
+" When editing Clojure, ( and ) in normal mode skips to [ and { as well
+let g:paredit_smartjump = 1
+
 " save some <Esc> reaching by mapping kj to it; kj is a very uncommon
 " sequence, and you can always just type it slowly if you need it.
 inoremap kj <Esc>
