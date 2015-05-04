@@ -2,10 +2,6 @@
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 	ignore = dirty
-[submodule "pyflakes-pathogen"]
-	path = pyflakes-pathogen
-	url = https://github.com/mitechie/pyflakes-pathogen.git
-	ignore = dirty
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
@@ -111,3 +107,6 @@
 [submodule "bundle/paredit"]
 	path = bundle/paredit
 	url = https://github.com/vim-scripts/paredit.vim.git
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
