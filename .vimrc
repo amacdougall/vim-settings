@@ -190,6 +190,8 @@ if has("autocmd")
   au BufRead,BufNewFile Guardfile set filetype=ruby
   au BufRead,BufNewFile *.clj set filetype=clojure
   au BufRead,BufNewFile *.cljs set filetype=clojure
+  " this TypeScript one works because the syntax is so similar
+  au BufRead,BufNewFile *.ts set filetype=actionscript
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
