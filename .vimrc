@@ -44,9 +44,46 @@ if has("gui_running")
     set guioptions=egt
 endif
 
-" pathogen.vim loads plugins from .vim/bundle/myPlugin
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" VUNDLE PLUGIN CONFIG
+" Vundle setup
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+" plugin listing
+" ...from Github
+Plugin "amacdougall/Birds-of-Paradise-VIM-Theme"
+Plugin "amacdougall/Zenburn"
+Plugin "amacdougall/badwolf"
+Plugin "amacdougall/inkpot"
+Plugin "amacdougall/jellybeans.vim"
+Plugin "amacdougall/vim-colors-solarized"
+Plugin "amacdougall/vim-javascript"
+Plugin "amacdougall/vim-pyte"
+Plugin "ervandew/supertab"
+Plugin "jpalardy/vim-slime"
+Plugin "michaeljsmith/vim-indent-object"
+Plugin "mxw/vim-jsx"
+Plugin "scrooloose/syntastic"
+Plugin "sjl/gundo.vim"
+Plugin "tpope/vim-fugitive"
+Plugin "tpope/vim-haml"
+Plugin "tpope/vim-repeat"
+Plugin "vim-scripts/TaskList.vim"
+Plugin "vim-scripts/The-NERD-tree"
+Plugin "vim-scripts/YankRing.vim"
+Plugin "vim-scripts/paredit.vim"
+Plugin 'amacdougall/vim-clojure-static'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/matchit.zip' " why .zip? Who knows
+Plugin 'vim-scripts/ruby-matchit'
+Plugin 'vim-scripts/wokmarks.vim'
+Plugin 'xolox/vim-reload'
+
+
+call vundle#end()
 
 " don't pop up help on an accidental F1
 nnoremap <F1> <Esc>
