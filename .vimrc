@@ -66,6 +66,9 @@ noremap <Leader>aj :Ack --js "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure "
 
+" also, use ag as the backing app for ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " plugin sidebars
 noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :GundoToggle<CR>
