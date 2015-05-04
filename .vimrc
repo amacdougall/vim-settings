@@ -52,36 +52,40 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugin listing
 " ...from Github
-Plugin "amacdougall/Birds-of-Paradise-VIM-Theme"
-Plugin "amacdougall/Zenburn"
-Plugin "amacdougall/badwolf"
-Plugin "amacdougall/inkpot"
-Plugin "amacdougall/jellybeans.vim"
-Plugin "amacdougall/vim-colors-solarized"
-Plugin "amacdougall/vim-javascript"
-Plugin "amacdougall/vim-pyte"
-Plugin "ervandew/supertab"
-Plugin "jpalardy/vim-slime"
-Plugin "michaeljsmith/vim-indent-object"
-Plugin "mxw/vim-jsx"
-Plugin "scrooloose/syntastic"
-Plugin "sjl/gundo.vim"
-Plugin "tpope/vim-fugitive"
-Plugin "tpope/vim-haml"
-Plugin "tpope/vim-repeat"
-Plugin "vim-scripts/TaskList.vim"
-Plugin "vim-scripts/The-NERD-tree"
-Plugin "vim-scripts/YankRing.vim"
-Plugin "vim-scripts/paredit.vim"
+Plugin 'amacdougall/Birds-of-Paradise-VIM-Theme'
+Plugin 'amacdougall/Zenburn'
+Plugin 'amacdougall/badwolf'
+Plugin 'amacdougall/inkpot'
+Plugin 'amacdougall/jellybeans.vim'
+Plugin 'amacdougall/vim-colors-solarized'
+Plugin 'amacdougall/vim-javascript'
+Plugin 'amacdougall/vim-pyte'
+Plugin 'buztard/vim-rel-jump'
+Plugin 'ervandew/supertab'
+Plugin 'jpalardy/vim-slime'
+Plugin 'junegunn/fzf'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-scripts/TaskList.vim'
+Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/paredit.vim'
 Plugin 'amacdougall/vim-clojure-static'
-Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/matchit.zip' " why .zip? Who knows
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/wokmarks.vim'
+Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-reload'
 
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 
 call vundle#end()
 
@@ -90,12 +94,25 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 
 " key mappings (leave <Leader>p free for PeepOpen on OSX)
-let mapleader = ","
+let mapleader = " "
 
-" file opening/switching
-noremap <Leader>e :FufFile<CR>
+" file save
+noremap <Leader>fs :w<CR>
+
+" FuzzyFinder, for everyday file opening and buffer switching
+" mnemonic: 'file edit'
+noremap <Leader>fe :FufFile<CR>
+" mnemonic: 'alt-tab'
 noremap <Leader><Tab> :FufBuffer<CR>
+" mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
+
+" FZF, for industrial-strength searches
+let g:fzf_launcher = 'fake_xterm %s'
+" mnemonic: 'file find'
+noremap <Leader>ff :FZF<CR>
+" mnemonic: 'file extended'
+noremap <Leader>fx :FZF -x<CR>
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
@@ -109,7 +126,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " plugin sidebars
 noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :GundoToggle<CR>
-noremap <Leader>t :TagbarToggle<CR>
 
 " quickfix (usually Ack results) list: close, next, previous
 noremap <Leader>c :cclose<CR>
@@ -163,10 +179,8 @@ abbr dl( Debug.log(
 abbr di( Debug.indent(
 abbr du( Debug.unindent(
 
-if !has("gui_running")
-  " color scheme
-  :colorscheme zenburn
-endif
+" initial color scheme
+:colorscheme zenburn
 
 set history=250		" keep 250 lines of command line history
 set ruler		" show the cursor position all the time
@@ -174,21 +188,6 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
 set tags=./tags,tags
-
-" set up Actionscript in Tagbar
-let g:tagbar_type_actionscript = {
-	\ 'ctagstype': 'ActionScript',
-	\ 'kinds' : [
-		\ 'f:functions,methods',
-		\ 'p:properties',
-		\ 'v:variables',
-		\ 'c:classes',
-		\ 'i:{To do}'
-	\ ]
-\ }
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 noremap Q gq
