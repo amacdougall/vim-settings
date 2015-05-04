@@ -6,3 +6,6 @@
 *.swm
 *.swl
 .netrwhist
+
+# ignore vundle-managed bundles
+/bundle
