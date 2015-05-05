@@ -52,33 +52,35 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugin listing
 " ...from Github
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'amacdougall/Birds-of-Paradise-VIM-Theme'
 Plugin 'amacdougall/Zenburn'
 Plugin 'amacdougall/badwolf'
 Plugin 'amacdougall/inkpot'
 Plugin 'amacdougall/jellybeans.vim'
+Plugin 'amacdougall/vim-clojure-static'
 Plugin 'amacdougall/vim-colors-solarized'
 Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
 Plugin 'buztard/vim-rel-jump'
 Plugin 'ervandew/supertab'
+Plugin 'guns/vim-sexp'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'vim-scripts/YankRing.vim'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'amacdougall/vim-clojure-static'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/paredit.vim'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/wokmarks.vim'
 Plugin 'xolox/vim-misc'
@@ -113,6 +115,11 @@ let g:fzf_launcher = 'fake_xterm %s'
 noremap <Leader>ff :FZF<CR>
 " mnemonic: 'file extended'
 noremap <Leader>fx :FZF -x<CR>
+
+" EasyMotion searches
+nmap <Leader>w <Plug>(easymotion-w)
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
