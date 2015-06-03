@@ -111,13 +111,10 @@ noremap <Leader>fr :FufRenewCache<CR>
 
 " FZF, for industrial-strength searches
 let g:fzf_launcher = 'fake_xterm %s'
-" mnemonic: 'file find'
-noremap <Leader>ff :FZF<CR>
-" mnemonic: 'file extended'
-noremap <Leader>fx :FZF -x<CR>
+" mnemonic: 'file find'; use extended mode so we can be cool
+noremap <Leader>ff :FZF -x<CR>
 
-" EasyMotion searches
-nmap <Leader>w <Plug>(easymotion-w)
+" EasyMotion searches (I don't even really need the 'full' version)
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
 
