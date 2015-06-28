@@ -64,6 +64,7 @@ Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
 Plugin 'buztard/vim-rel-jump'
 Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-sexp'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
@@ -80,7 +81,7 @@ Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/paredit.vim'
+" Plugin 'vim-scripts/paredit.vim'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/wokmarks.vim'
 Plugin 'xolox/vim-misc'
@@ -110,13 +111,18 @@ noremap <Leader><Tab> :FufBuffer<CR>
 noremap <Leader>fr :FufRenewCache<CR>
 
 " FZF, for industrial-strength searches
-let g:fzf_launcher = 'fake_xterm %s'
-" mnemonic: 'file find'; use extended mode so we can be cool
+set rtp+=~/.fzf
+
+" ...needs an xterm-equivalent script in OSX
+if has("gui_macvim")
+  let g:fzf_launcher = 'fake_xterm %s'
+endif
+
+" mnemonic: 'file find' (uses fzf extended mode)
 noremap <Leader>ff :FZF -x<CR>
 
-" EasyMotion searches (I don't even really need the 'full' version)
+" EasyMotion searches
 nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
