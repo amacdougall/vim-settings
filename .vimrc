@@ -65,6 +65,7 @@ Plugin 'amacdougall/vim-pyte'
 Plugin 'buztard/vim-rel-jump'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ervandew/supertab'
+Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-sexp'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
@@ -233,6 +234,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.cljs set filetype=clojure
   " this TypeScript one works because the syntax is so similar
   au BufRead,BufNewFile *.ts set filetype=actionscript
+  au BufRead,BufNewFile *.sql set filetype=pgsql " for now, at least!
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
