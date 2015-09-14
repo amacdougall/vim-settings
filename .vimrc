@@ -11,8 +11,11 @@ set hidden
 " always show status line
 set laststatus=2
 
-" between swap files and git, *~ backups haven't been needed
+" between frequent saving and git, *~ backups haven't been needed
 set nobackup
+
+" honestly, swap files have annoyed me way more often than they have helped
+set noswapfile
 
 " seriously, these aren't defaults?
 set nowrap
@@ -24,9 +27,6 @@ set nohlsearch
 
 " automatically get changes from outside -- such as git pulls
 set autoread
-
-" git has been good enough for me!
-set nobackup
 
 " don't put double spaces after a period, motherfucker
 set nojoinspaces
