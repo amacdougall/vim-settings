@@ -143,6 +143,11 @@ noremap <Leader>sc :lclose<CR>
 noremap <Leader>sn :lnext<CR>
 noremap <Leader>sN :lNext<CR>
 
+" Background color switch
+noremap <Leader>bl :set background=light<CR>
+noremap <Leader>bd :set background=dark<CR>
+
+
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
 
