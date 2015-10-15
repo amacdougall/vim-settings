@@ -140,8 +140,8 @@ noremap <Leader>g :GundoToggle<CR>
 
 " quickfix (usually Ack results) list: close, next, previous
 noremap <Leader>c :cclose<CR>
-noremap <Leader>n :cn<CR> zz
-noremap <Leader>N :cN<CR> zz
+noremap <Leader>n :cn<CR>zz
+noremap <Leader>N :cN<CR>zz
 
 " Syntastic results open, close, next, previous (actually the location list)
 noremap <Leader>so :Errors<CR>
