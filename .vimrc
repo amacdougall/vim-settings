@@ -11,8 +11,11 @@ set hidden
 " always show status line
 set laststatus=2
 
-" between swap files and git, *~ backups haven't been needed
+" with git and good save discipline, *~ backups haven't been needed
 set nobackup
+
+" I also see swapfiles get in my way a lot more than they help
+set noswapfile
 
 " seriously, these aren't defaults?
 set nowrap
@@ -52,22 +55,22 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugin listing
 " ...from Github
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'amacdougall/Birds-of-Paradise-VIM-Theme'
-Plugin 'amacdougall/Zenburn'
 Plugin 'amacdougall/badwolf'
+Plugin 'amacdougall/Birds-of-Paradise-VIM-Theme'
 Plugin 'amacdougall/inkpot'
 Plugin 'amacdougall/jellybeans.vim'
 Plugin 'amacdougall/vim-clojure-static'
 Plugin 'amacdougall/vim-colors-solarized'
 Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
+Plugin 'amacdougall/Zenburn'
 Plugin 'buztard/vim-rel-jump'
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-sexp'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
@@ -76,14 +79,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/The-NERD-tree'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'vim-scripts/matchit.zip'
-" Plugin 'vim-scripts/paredit.vim'
-Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/wokmarks.vim'
+Plugin 'vim-scripts/YankRing.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-reload'
 
@@ -156,6 +159,9 @@ let g:gundo_preview_bottom = 1
 
 " disable Yankring zap keys
 let g:yankring_zap_keys = ''
+
+" allow vim-clojure-static to do its thing on long forms
+let g:clojure_maxlines = 250
 
 " toggle relative line numbers
 noremap <Leader>r :set rnu!<CR>
@@ -238,6 +244,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.cljs set filetype=clojure
   " this TypeScript one works because the syntax is so similar
   au BufRead,BufNewFile *.ts set filetype=actionscript
+  au BufNewFile,BufRead *.sql set filetype=pgsql
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
