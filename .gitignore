@@ -1,10 +1,6 @@
 .DS_Store
 *~
-*.swp
-*.swo
-*.swn
-*.swm
-*.swl
+*.sw[a-p]
 .netrwhist
 
 # ignore vundle-managed bundles

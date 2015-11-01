@@ -14,7 +14,7 @@ set laststatus=2
 " with git and good save discipline, *~ backups haven't been needed
 set nobackup
 
-" I also see swapfiles get in my way a lot more than they help
+" honestly, swap files have annoyed me way more often than they have helped
 set noswapfile
 
 " seriously, these aren't defaults?
@@ -27,9 +27,6 @@ set nohlsearch
 
 " automatically get changes from outside -- such as git pulls
 set autoread
-
-" git has been good enough for me!
-set nobackup
 
 " don't put double spaces after a period, motherfucker
 set nojoinspaces
@@ -65,6 +62,7 @@ Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
 Plugin 'amacdougall/Zenburn'
 Plugin 'buztard/vim-rel-jump'
+Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ervandew/supertab'
 Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-sexp'
@@ -142,14 +140,19 @@ noremap <Leader>g :GundoToggle<CR>
 
 " quickfix (usually Ack results) list: close, next, previous
 noremap <Leader>c :cclose<CR>
-noremap <Leader>n :cn<CR> zz
-noremap <Leader>N :cN<CR> zz
+noremap <Leader>n :cn<CR>zz
+noremap <Leader>N :cN<CR>zz
 
 " Syntastic results open, close, next, previous (actually the location list)
 noremap <Leader>so :Errors<CR>
 noremap <Leader>sc :lclose<CR>
 noremap <Leader>sn :lnext<CR>
 noremap <Leader>sN :lNext<CR>
+
+" Background color switch
+noremap <Leader>bl :set background=light<CR>
+noremap <Leader>bd :set background=dark<CR>
+
 
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
@@ -170,18 +173,8 @@ noremap <Leader>r :set rnu!<CR>
 noremap n nzz
 noremap N Nzz
 
-" set up Syntastic jsHint configuration
-let g:syntastic_javascript_checkers = ['jsxhint'] " if array, runs ALL in order
-let g:syntastic_javascript_jshint_conf = "~/.jshintrc"
-" let g:syntastic_javascript_jsxhint_conf = "~/.jshintrc"
-
-" paredit config
-" When editing Clojure, ( and ) in normal mode skips to [ and { as well
-let g:paredit_smartjump = 1
-
-" save some <Esc> reaching by mapping kj to it; kj is a very uncommon
-" sequence, and you can always just type it slowly if you need it.
-inoremap kj <Esc>
+" set up Syntastic eslint configuration
+let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
 
 :command! JSONFormat :execute ':%!python -m json.tool' | set filetype=javascript
 
