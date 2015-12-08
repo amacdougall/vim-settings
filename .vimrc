@@ -153,7 +153,6 @@ noremap <Leader>sN :lNext<CR>
 noremap <Leader>bl :set background=light<CR>
 noremap <Leader>bd :set background=dark<CR>
 
-
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
 
@@ -164,7 +163,7 @@ let g:gundo_preview_bottom = 1
 let g:yankring_zap_keys = ''
 
 " toggle relative line numbers
-noremap <Leader>r :set rnu!<CR>
+noremap <Leader>rn :set rnu!<CR>
 
 " center on match when searching
 noremap n nzz
