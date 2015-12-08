@@ -97,7 +97,7 @@ call vundle#end()
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 
-" key mappings (leave <Leader>p free for PeepOpen on OSX)
+" inspired by Evil Leader in Spacemacs
 let mapleader = " "
 
 " file save
@@ -128,6 +128,7 @@ nmap s <Plug>(easymotion-s2)
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
 noremap <Leader>aj :Ack --js "
+noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure "
 
@@ -182,10 +183,8 @@ let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
 
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
+" quick JS console.log insertion
 abbr cl( console.log(
-abbr dl( Debug.log(
-abbr di( Debug.indent(
-abbr du( Debug.unindent(
 
 " initial color scheme
 :colorscheme zenburn
@@ -195,6 +194,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+" Used by TagList, which manages Exuberant CTags
 set tags=./tags,tags
 
 " Don't use Ex mode, use Q for formatting
