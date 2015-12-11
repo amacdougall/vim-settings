@@ -139,8 +139,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :GundoToggle<CR>
 
-" quickfix (usually Ack results) list: close, next, previous
-noremap <Leader>c :cclose<CR>
+" close quickfix, error, and preview windows
+noremap <Leader>c :cclose<CR>:pc<CR>:lclose<CR>
+
+" quickfix (usually Ack results) list: next, previous
 noremap <Leader>n :cn<CR>zz
 noremap <Leader>N :cN<CR>zz
 
