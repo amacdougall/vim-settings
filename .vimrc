@@ -14,7 +14,7 @@ set laststatus=2
 " with git and good save discipline, *~ backups haven't been needed
 set nobackup
 
-" honestly, swap files have annoyed me way more often than they have helped
+" I also see swapfiles get in my way a lot more than they help
 set noswapfile
 
 " seriously, these aren't defaults?
@@ -97,7 +97,7 @@ call vundle#end()
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 
-" key mappings (leave <Leader>p free for PeepOpen on OSX)
+" inspired by Evil Leader in Spacemacs
 let mapleader = " "
 
 " file save
@@ -128,6 +128,7 @@ nmap s <Plug>(easymotion-s2)
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
 noremap <Leader>aj :Ack --js "
+noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure "
 
@@ -138,8 +139,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :GundoToggle<CR>
 
-" quickfix (usually Ack results) list: close, next, previous
-noremap <Leader>c :cclose<CR>
+" close quickfix, error, and preview windows
+noremap <Leader>c :cclose<CR>:pc<CR>:lclose<CR>
+
+" quickfix (usually Ack results) list: next, previous
 noremap <Leader>n :cn<CR>zz
 noremap <Leader>N :cN<CR>zz
 
@@ -152,7 +155,6 @@ noremap <Leader>sN :lNext<CR>
 " Background color switch
 noremap <Leader>bl :set background=light<CR>
 noremap <Leader>bd :set background=dark<CR>
-
 
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
@@ -167,7 +169,7 @@ let g:yankring_zap_keys = ''
 let g:clojure_maxlines = 250
 
 " toggle relative line numbers
-noremap <Leader>r :set rnu!<CR>
+noremap <Leader>rn :set rnu!<CR>
 
 " center on match when searching
 noremap n nzz
@@ -183,10 +185,8 @@ let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
 
 set foldlevel=20 " no initial folds (TO DO: improve this)
 
+" quick JS console.log insertion
 abbr cl( console.log(
-abbr dl( Debug.log(
-abbr di( Debug.indent(
-abbr du( Debug.unindent(
 
 " initial color scheme
 :colorscheme zenburn
@@ -196,6 +196,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+" Used by TagList, which manages Exuberant CTags
 set tags=./tags,tags
 
 " Don't use Ex mode, use Q for formatting
