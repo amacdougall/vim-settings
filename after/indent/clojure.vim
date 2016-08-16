@@ -6,3 +6,5 @@ setlocal lispwords+=context*
 
 setlocal lispwords+=om/
 setlocal lispwords+=dom/
+
+setlocal lispwords+=async
