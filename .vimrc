@@ -131,7 +131,7 @@ noremap <Leader>aa :Ack --actionscript "
 noremap <Leader>aj :Ack --js "
 noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
-noremap <Leader>ac :Ack --clojure "
+noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
 
 " also, use ag as the backing app for ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
