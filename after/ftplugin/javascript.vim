@@ -9,5 +9,8 @@ set smartindent
 " check syntax on lines of up to 500 characters
 set synmaxcol=500
 
-" run tests, assuming grunt at least
-noremap <Leader>rt :SlimeSend1 grunt test &<CR>
+" run grunt tests
+noremap <Leader>gt :SlimeSend1 grunt test &<CR>
+
+" run npm tests
+noremap <Leader>nt :SlimeSend1 npm test &<CR>

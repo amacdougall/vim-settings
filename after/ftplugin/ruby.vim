@@ -22,6 +22,15 @@ let b:current_syntax = s:bcs
 " match optional, surrounding single or double quote and any whitespace in the heredoc name
 syntax region rubyHereDocSQL matchgroup=Statement start=+<<-SQL\s*+ end=+\s*SQL$+ contains=@SQL
 
+" amacdougall Slime commands
+" send ^\ to re-run latest Spin test
+noremap <Leader>rt :SlimeSend1 <CR>
+" send ^D (EOL) to exit a Pry breakpoint
+noremap <Leader>pc :SlimeSend1 <CR>
+" send q to exit a Pry multipage output
+noremap <Leader>pq :SlimeSend1 q<CR>
+
+
 " JavaScript
 let s:bcs = b:current_syntax
 unlet b:current_syntax
