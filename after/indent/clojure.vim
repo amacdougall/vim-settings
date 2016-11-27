@@ -8,3 +8,5 @@ setlocal lispwords+=om/
 setlocal lispwords+=dom/
 
 setlocal lispwords+=async
+
+setlocal lispwords+=fdef
