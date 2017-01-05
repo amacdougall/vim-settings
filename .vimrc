@@ -66,6 +66,7 @@ Plugin 'ervandew/supertab'
 Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
 Plugin 'Lokaltog/vim-easymotion'
@@ -104,15 +105,18 @@ let mapleader = " "
 " file save
 noremap <Leader>fs :w<CR>
 
-" FuzzyFinder, for everyday file opening and buffer switching
-" mnemonic: 'file edit'
+" FuzzyFinder, for flexible file opening
 noremap <Leader>fe :FufFile<CR>
+"
 " mnemonic: 'alt-tab'
-noremap <Leader><Tab> :FufBuffer<CR>
+noremap <Leader><Tab> :BuffergatorOpen<CR>
+" don't add global keymappings beyond the ones I define
+let g:buffergator_suppress_keymaps = 1
+
 " mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
 
-" FZF, for industrial-strength searches
+" FZF, for industrial-strength searches within the cwd
 set rtp+=~/.fzf
 
 " ...needs an xterm-equivalent script in OSX
