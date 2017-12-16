@@ -1,6 +1,7 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -48,7 +49,7 @@ endif
 " Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " plugin listing
 " ...from Github
@@ -105,19 +106,31 @@ let mapleader = " "
 " file save
 noremap <Leader>fs :w<CR>
 
-" FuzzyFinder, for flexible file opening
-noremap <Leader>fe :FufFile<CR>
-"
+
+" Buffergator, buffer switcher
+let g:buffergator_sort_regime = "mru"
+let g:buffergator_autoexpand_on_split = 0
+" show Buffergator at top of screen
+let g:buffergator_viewport_split_policy = "T"
+" show Vim's buffer name
+let g:buffergator_display_regime = "bufname"
 " mnemonic: 'alt-tab'
 noremap <Leader><Tab> :BuffergatorOpen<CR>
 " don't add global keymappings beyond the ones I define
 let g:buffergator_suppress_keymaps = 1
 
+" These don't add to the jumplist, so I'll skip them for now
+" noremap gn :BuffergatorMruCycleNext<CR>
+" noremap gp :BuffergatorMruCyclePrev<CR>
+
+" FuzzyFinder, for flexible file opening
+noremap <Leader>fe :FufFile<CR>
+
 " mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
 
 " FZF, for industrial-strength searches within the cwd
-set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 
 " ...needs an xterm-equivalent script in OSX
 if has("gui_macvim")

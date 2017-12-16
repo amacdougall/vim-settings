@@ -25,10 +25,12 @@ syntax region rubyHereDocSQL matchgroup=Statement start=+<<-SQL\s*+ end=+\s*SQL$
 " amacdougall Slime commands
 " send ^\ to re-run latest Spin test
 noremap <Leader>rt :SlimeSend1 <CR>
-" send ^D (EOL) to exit a Pry breakpoint
-noremap <Leader>pc :SlimeSend1 <CR>
-" send q to exit a Pry multipage output
-noremap <Leader>pq :SlimeSend1 q<CR>
+
+" send ^D (EOL)
+noremap <Leader>d :SlimeSend1 <CR>
+
+" send q
+noremap <Leader>q :SlimeSend1 q<CR>
 
 
 " JavaScript
