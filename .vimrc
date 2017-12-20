@@ -189,6 +189,9 @@ let g:clojure_maxlines = 250
 " toggle relative line numbers
 noremap <Leader>rn :set rnu!<CR>
 
+" repeat last command in bash using vim-slime
+noremap <Leader>!! :SlimeSend1 !!<CR>
+
 " center on match when searching
 noremap n nzz
 noremap N Nzz
