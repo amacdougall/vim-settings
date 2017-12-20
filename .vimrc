@@ -76,7 +76,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
-Plugin 'sjl/gundo.vim'
+Plugin 'mbbill/undotree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-repeat'
@@ -156,7 +156,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " plugin sidebars
 noremap <Leader>y :YRShow<CR>
-noremap <Leader>g :GundoToggle<CR>
+noremap <Leader>g :UndotreeToggle<CR>
 
 " close quickfix, error, and preview windows
 noremap <Leader>c :cclose<CR>:pc<CR>:lclose<CR>
@@ -177,9 +177,6 @@ noremap <Leader>bd :set background=dark<CR>
 
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
-
-" display Gundo preview at bottom, not left
-let g:gundo_preview_bottom = 1
 
 " disable Yankring zap keys
 let g:yankring_zap_keys = ''
