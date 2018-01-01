@@ -10,7 +10,7 @@ set smartindent
 set synmaxcol=500
 
 " run grunt tests
-noremap <Leader>gt :SlimeSend1 grunt test &<CR>
+noremap <Leader>gt :SlimeSend1 grunt test<CR>
 
 " run npm tests
 noremap <Leader>nt :SlimeSend1 npm test<CR>
