@@ -68,15 +68,21 @@ Plugin 'ervandew/supertab'
 Plugin 'exu/pgsql.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kovisoft/slimv'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'mbbill/undotree'
+Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-repeat'
@@ -91,6 +97,7 @@ Plugin 'vim-scripts/wokmarks.vim'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-reload'
+Plugin 'yalesov/vim-emblem'
 
 Plugin 'L9'
 Plugin 'FuzzyFinder'
@@ -106,6 +113,9 @@ let mapleader = " "
 
 " file save
 noremap <Leader>fs :w<CR>
+
+" highlight JSX even in .js files
+let g:jsx_ext_required = 0
 
 
 " Buffergator, buffer switcher
@@ -139,20 +149,27 @@ if has("gui_macvim")
 endif
 
 " mnemonic: 'file find' (uses fzf extended mode)
-noremap <Leader>ff :FZF -x<CR>
+noremap <Leader>fg :GFiles<CR>
+noremap <Leader>ff :Files<CR>
+" noremap <Leader>ff :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+
+" mnemonic: 'buffer buffer' (for consistency with leader-ff really)
+noremap <Leader>bb :Buffers<CR>
 
 " EasyMotion searches
 nmap s <Plug>(easymotion-s2)
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
-noremap <Leader>aj :Ack --js "
+noremap <Leader>aj :Ack --js --coffee "
 noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
+noremap <Leader>ae :Ack -G "\.emblem$" "
+noremap <Leader>as :Ack -G "\.s(a\|c)ss(\.erb)?$" "
 
 " also, use ag as the backing app for ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag --nogroup --nocolor --column --path-to-ignore ~/.ignore'
 
 " plugin sidebars
 noremap <Leader>y :YRShow<CR>
@@ -177,6 +194,13 @@ noremap <Leader>bd :set background=dark<CR>
 
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
+
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+let g:slime_dont_ask_default = 1
+
+" slimv / swank
+let g:slimv_swank_clojure = '!osascript -e "tell application \"Terminal\" to do script \"lein ritz\""'
+let g:swank_port = 54321
 
 " disable Yankring zap keys
 let g:yankring_zap_keys = ''
