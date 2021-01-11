@@ -152,8 +152,8 @@ endif
 
 " mnemonic: 'file find' (uses fzf extended mode)
 noremap <Leader>fg :GFiles<CR>
-noremap <Leader>ff :Files<CR>
-" noremap <Leader>ff :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+" noremap <Leader>ff :Files<CR>
+noremap <Leader>ff :call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g ""', 'sink': 'e'})<CR>
 
 " mnemonic: 'buffer buffer' (for consistency with leader-ff really)
 noremap <Leader>bb :Buffers<CR>
@@ -220,8 +220,11 @@ noremap <Leader>!! :SlimeSend1 !!<CR>
 noremap n nzz
 noremap N Nzz
 
+inoremap kj <ESC>
+
 " set up Syntastic eslint configuration
 let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
+let g:syntastic_coffee_checkers = ['coffee'] " if array, runs ALL in order
 
 :command! JSONFormat :execute ':%!python -m json.tool' | set filetype=javascript
 
