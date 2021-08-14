@@ -163,7 +163,7 @@ nmap s <Plug>(easymotion-s2)
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
-noremap <Leader>aj :Ack --js --coffee "
+noremap <Leader>aj :Ack --js --coffee --ts "
 noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
@@ -285,8 +285,6 @@ if has("autocmd")
   au BufRead,BufNewFile *.clj set filetype=clojure
   au BufRead,BufNewFile *.cljs set filetype=clojure
   au BufRead,BufNewFile *.cljc set filetype=clojure
-  " this TypeScript one works because the syntax is so similar
-  au BufRead,BufNewFile *.ts set filetype=actionscript
   au BufNewFile,BufRead *.sql set filetype=pgsql
 
   " Put these in an autocmd group, so that we can delete them easily.
