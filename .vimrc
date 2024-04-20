@@ -67,22 +67,28 @@ Plugin 'buztard/vim-rel-jump'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ervandew/supertab'
 Plugin 'exu/pgsql.vim'
+Plugin 'fatih/vim-go'
+Plugin 'github/copilot.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'icymind/NeoSolarized'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/goyo.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kovisoft/slimv'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'mbbill/undotree'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'mxw/vim-jsx'
+" Plugin 'mxw/vim-jsx'
+Plugin 'nvim-lua/plenary.nvim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
@@ -136,19 +142,13 @@ let g:buffergator_suppress_keymaps = 1
 " noremap gn :BuffergatorMruCycleNext<CR>
 " noremap gp :BuffergatorMruCyclePrev<CR>
 
+inoremap kj <ESC>
+
 " FuzzyFinder, for flexible file opening
 noremap <Leader>fe :FufFile<CR>
 
 " mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
-
-" FZF, for industrial-strength searches within the cwd
-set rtp+=/usr/local/opt/fzf
-
-" ...needs an xterm-equivalent script in OSX
-if has("gui_macvim")
-  let g:fzf_launcher = 'fake_xterm %s'
-endif
 
 " mnemonic: 'file find' (uses fzf extended mode)
 noremap <Leader>fg :GFiles<CR>
@@ -169,6 +169,8 @@ noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
 noremap <Leader>ae :Ack -G "\.emblem$" "
 noremap <Leader>as :Ack -G "\.s(a\|c)ss(\.erb)?$" "
+noremap <Leader>am :Ack --markdown "
+noremap <Leader>at :Ack -G "\.tsx?$" "
 
 " also, use ag as the backing app for ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column --path-to-ignore ~/.ignore'
@@ -178,7 +180,7 @@ noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :UndotreeToggle<CR>
 
 " close quickfix, error, and preview windows
-noremap <Leader>c :cclose<CR>:pc<CR>:lclose<CR>
+noremap <Leader>cc :cclose<CR>:pc<CR>:lclose<CR>
 
 " quickfix (usually Ack results) list: next, previous
 noremap <Leader>n :cn<CR>zz
@@ -200,10 +202,6 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "command", "target_pane": ":"}
 let g:slime_dont_ask_default = 1
 
-" slimv / swank
-let g:slimv_swank_clojure = '!osascript -e "tell application \"Terminal\" to do script \"lein ritz\""'
-let g:swank_port = 54321
-
 " disable Yankring zap keys
 let g:yankring_zap_keys = ''
 
@@ -216,6 +214,10 @@ noremap <Leader>rn :set rnu!<CR>
 " repeat last command in bash using vim-slime
 noremap <Leader>!! :SlimeSend1 !!<CR>
 
+" enable/disable Github Copilot
+noremap <Leader>ce :Copilot enable<CR>
+noremap <Leader>cd :Copilot disable<CR>
+
 " center on match when searching
 noremap n nzz
 noremap N Nzz
@@ -225,6 +227,12 @@ inoremap kj <ESC>
 " set up Syntastic eslint configuration
 let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
 let g:syntastic_coffee_checkers = ['coffee'] " if array, runs ALL in order
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python']
+
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["go"] }
 
 :command! JSONFormat :execute ':%!python -m json.tool' | set filetype=javascript
 
@@ -262,6 +270,14 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 if &t_Co > 2 || has("gui_running")
   syntax on
+  set guifont=Menlo:h14
+
+	let g:neovide_scale_factor=1.0
+	function! ChangeScaleFactor(delta)
+	  let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
+	endfunction
+	nnoremap <expr><C-=> ChangeScaleFactor(1.10)
+	nnoremap <expr><C--> ChangeScaleFactor(1/1.10)
 endif
 
 " Only do this part when compiled with support for autocommands.

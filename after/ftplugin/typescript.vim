@@ -12,8 +12,11 @@ set synmaxcol=500
 " run grunt tests
 noremap <Leader>gt :SlimeSend1 grunt test<CR>
 
+" start npm application
+noremap <Leader>ns :SlimeSend1 npm start<CR>
+
 " run npm tests
 noremap <Leader>nt :SlimeSend1 npm test<CR>
 
-" start npm application
-noremap <Leader>ns :SlimeSend1 npm start<CR>
+" run yarn tests
+noremap <Leader>rt :SlimeSend1 yarn test<CR>
