@@ -3,6 +3,9 @@
 set nocompatible
 filetype off
 
+" NOTE: config.lua is required at the bottom of this file; named
+" config.lua instead of init.lua so it isn't autoloaded by Neovim
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -60,35 +63,28 @@ Plugin 'amacdougall/Zenburn'
 Plugin 'amacdougall/badwolf'
 Plugin 'amacdougall/inkpot'
 Plugin 'amacdougall/jellybeans.vim'
-Plugin 'amacdougall/vim-colors-solarized'
 Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
-Plugin 'buztard/vim-rel-jump'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab' " test disable
 Plugin 'exu/pgsql.vim'
 Plugin 'fatih/vim-go'
 Plugin 'github/copilot.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-sexp'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'HerringtonDarkholme/yats.vim'
+" Plugin 'HerringtonDarkholme/yats.vim' " typescript
 Plugin 'icymind/NeoSolarized'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/goyo.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kovisoft/slimv'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim' " typescript
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'mbbill/undotree'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
-Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'mxw/vim-jsx'
-Plugin 'nvim-lua/plenary.nvim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
@@ -105,10 +101,9 @@ Plugin 'vim-scripts/ruby-matchit'
 Plugin 'vim-scripts/wokmarks.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-reload'
-Plugin 'yalesov/vim-emblem'
 
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+" Plugin 'L9'
+" Plugin 'FuzzyFinder'
 
 call vundle#end()
 
@@ -338,3 +333,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+lua require('config')
