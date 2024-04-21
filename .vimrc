@@ -120,7 +120,6 @@ noremap <Leader>fs :w<CR>
 " highlight JSX even in .js files
 let g:jsx_ext_required = 0
 
-
 " Buffergator, buffer switcher
 let g:buffergator_sort_regime = "mru"
 let g:buffergator_autoexpand_on_split = 0

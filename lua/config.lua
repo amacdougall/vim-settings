@@ -29,5 +29,11 @@ require("typescript-tools").setup({
 
 		-- K to hover
 		buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+		-- reformat on save
+		buf_set_keymap("n", "<Leader>fs", "<cmd>lua vim.lsp.buf.format()<CR><cmd>:w<CR>", { noremap = true, silent = true })
+		-- references to current symbol
+		buf_set_keymap("n", "<Leader>tr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+		-- implementations of current symbol; what you know about that?
+		buf_set_keymap("n", "<Leader>ti", "<cmd>lua vim.lsp.buf.implementations()<CR>", { noremap = true, silent = true })
 	end,
 })
