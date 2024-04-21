@@ -334,4 +334,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-lua require('config')
+if has("nvim")
+  lua require('config')
+end
