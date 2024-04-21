@@ -65,7 +65,7 @@ Plugin 'amacdougall/inkpot'
 Plugin 'amacdougall/jellybeans.vim'
 Plugin 'amacdougall/vim-javascript'
 Plugin 'amacdougall/vim-pyte'
-" Plugin 'ervandew/supertab' " test disable
+Plugin 'ervandew/supertab'
 Plugin 'exu/pgsql.vim'
 Plugin 'fatih/vim-go'
 Plugin 'github/copilot.vim'
