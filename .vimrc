@@ -147,7 +147,6 @@ if executable('ag')
     augroup END 
   endfunction
 endif
->>>>>>> origin/master
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
