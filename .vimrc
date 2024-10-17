@@ -43,6 +43,7 @@ set shiftwidth=4
 
 if has("gui_running")
     set guioptions=egt
+    set guifont=Menlo:h14
 endif
 
 " VUNDLE PLUGIN CONFIG
@@ -110,6 +111,9 @@ call vundle#end()
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 
+" or on ctrl-opt-cmd-f1
+nmap <M-C-D-F1> <NOP>
+
 " inspired by Evil Leader in Spacemacs
 let mapleader = " "
 
@@ -132,23 +136,25 @@ noremap <Leader><Tab> :BuffergatorOpen<CR>
 " don't add global keymappings beyond the ones I define
 let g:buffergator_suppress_keymaps = 1
 
+" neovide scale on +/- keys
+let g:neovide_scale_factor=1.0
+function! ChangeScaleFactor(delta)
+  let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
+endfunction
+nnoremap <expr><C-=> ChangeScaleFactor(1.05)
+nnoremap <expr><C--> ChangeScaleFactor(1/1.05)
+
 " These don't add to the jumplist, so I'll skip them for now
 " noremap gn :BuffergatorMruCycleNext<CR>
 " noremap gp :BuffergatorMruCyclePrev<CR>
+
+inoremap kj <ESC>
 
 " FuzzyFinder, for flexible file opening
 noremap <Leader>fe :FufFile<CR>
 
 " mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
-
-" FZF, for industrial-strength searches within the cwd
-set rtp+=/usr/local/opt/fzf
-
-" ...needs an xterm-equivalent script in OSX
-if has("gui_macvim")
-  let g:fzf_launcher = 'fake_xterm %s'
-endif
 
 " mnemonic: 'file find' (uses fzf extended mode)
 noremap <Leader>fg :GFiles<CR>
@@ -161,14 +167,20 @@ noremap <Leader>bb :Buffers<CR>
 " EasyMotion searches
 nmap s <Plug>(easymotion-s2)
 
+" ArgWrap (turn (1, 2, 3) to multiline or back)
+" https://git.foosoft.net/alex/vim-argwrap for customization options
+noremap <Leader>ww :ArgWrap<CR>
+
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
 noremap <Leader>aj :Ack --js --coffee "
 noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
-noremap <Leader>ae :Ack -G "\.emblem$" "
+noremap <Leader>ae :Ack -G "\.erb$" "
 noremap <Leader>as :Ack -G "\.s(a\|c)ss(\.erb)?$" "
+noremap <Leader>am :Ack --markdown "
+noremap <Leader>at :Ack -G "\.tsx?$" "
 
 " also, use ag as the backing app for ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column --path-to-ignore ~/.ignore'
@@ -178,7 +190,7 @@ noremap <Leader>y :YRShow<CR>
 noremap <Leader>g :UndotreeToggle<CR>
 
 " close quickfix, error, and preview windows
-noremap <Leader>c :cclose<CR>:pc<CR>:lclose<CR>
+noremap <Leader>cc :cclose<CR>:pc<CR>:lclose<CR>
 
 " quickfix (usually Ack results) list: next, previous
 noremap <Leader>n :cn<CR>zz
@@ -200,10 +212,6 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "command", "target_pane": ":"}
 let g:slime_dont_ask_default = 1
 
-" slimv / swank
-let g:slimv_swank_clojure = '!osascript -e "tell application \"Terminal\" to do script \"lein ritz\""'
-let g:swank_port = 54321
-
 " disable Yankring zap keys
 let g:yankring_zap_keys = ''
 
@@ -213,17 +221,38 @@ let g:clojure_maxlines = 250
 " toggle relative line numbers
 noremap <Leader>rn :set rnu!<CR>
 
+" toggle absolute line numbers
+noremap <Leader>no :set nu!<CR>
+
+" un-hard-wrap selection
+
+noremap <Leader>uw :g/./,-/\n$/j<CR>
+
 " repeat last command in bash using vim-slime
 noremap <Leader>!! :SlimeSend1 !!<CR>
+
+" configure Copilot to use nvm node
+let g:copilot_node_command = '~/.nvm/versions/node/v20.3.0/bin/node'
+
+" enable/disable Github Copilot
+noremap <Leader>ce :Copilot enable<CR>
+noremap <Leader>cd :Copilot disable<CR>
 
 " center on match when searching
 noremap n nzz
 noremap N Nzz
 
-" set up Syntastic eslint configuration
+" Syntastic configurations
 let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python']
 
-:command! JSONFormat :execute ':%!python -m json.tool' | set filetype=javascript
+
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["go"] }
+
+:command! JSONFormat :execute ':%!python3 -m json.tool' | set filetype=javascript
 
 " Useful when adding require lines to JS viewport code.
 :command! -nargs=1 RequireJS :read !require <args> %
@@ -282,16 +311,11 @@ if has("autocmd")
   au BufRead,BufNewFile *.clj set filetype=clojure
   au BufRead,BufNewFile *.cljs set filetype=clojure
   au BufRead,BufNewFile *.cljc set filetype=clojure
-  " this TypeScript one works because the syntax is so similar
-  au BufRead,BufNewFile *.ts set filetype=actionscript
   au BufNewFile,BufRead *.sql set filetype=pgsql
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
 
   " When reading an Actionscript file, always convert indentation spaces to tabs.
   au BufReadPost *.as retab!
