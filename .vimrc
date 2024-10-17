@@ -3,6 +3,9 @@
 set nocompatible
 filetype off
 
+" NOTE: config.lua is required a little ways down this file; made it
+" config.lua instead of init.lua so it isn't autoloaded by Neovim
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -40,72 +43,18 @@ set cul
 set noexpandtab
 set tabstop=4
 set shiftwidth=4
+"
+" inspired by Evil Leader in Spacemacs
+let mapleader = " "
 
 if has("gui_running")
     set guioptions=egt
     set guifont=Menlo:h14
 endif
 
-" VUNDLE PLUGIN CONFIG
-" Vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-" plugin listing
-" ...from Github
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'amacdougall/Birds-of-Paradise-VIM-Theme'
-Plugin 'amacdougall/Zenburn'
-Plugin 'amacdougall/badwolf'
-Plugin 'amacdougall/inkpot'
-Plugin 'amacdougall/jellybeans.vim'
-Plugin 'amacdougall/vim-colors-solarized'
-Plugin 'amacdougall/vim-javascript'
-Plugin 'amacdougall/vim-pyte'
-Plugin 'buztard/vim-rel-jump'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'ervandew/supertab'
-Plugin 'exu/pgsql.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-sexp'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'icymind/NeoSolarized'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'jpalardy/vim-slime'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kovisoft/slimv'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mbbill/undotree'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'mileszs/ack.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'mxw/vim-jsx'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/TaskList.vim'
-Plugin 'vim-scripts/The-NERD-tree'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/ruby-matchit'
-Plugin 'vim-scripts/wokmarks.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-reload'
-Plugin 'yalesov/vim-emblem'
-
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-
-call vundle#end()
+if has("nvim")
+  lua require('config')
+end
 
 " don't pop up help on an accidental F1
 nnoremap <F1> <Esc>
@@ -114,15 +63,11 @@ inoremap <F1> <Esc>
 " or on ctrl-opt-cmd-f1
 nmap <M-C-D-F1> <NOP>
 
-" inspired by Evil Leader in Spacemacs
-let mapleader = " "
-
 " file save
 noremap <Leader>fs :w<CR>
 
 " highlight JSX even in .js files
 let g:jsx_ext_required = 0
-
 
 " Buffergator, buffer switcher
 let g:buffergator_sort_regime = "mru"
@@ -157,9 +102,9 @@ noremap <Leader>fe :FufFile<CR>
 noremap <Leader>fr :FufRenewCache<CR>
 
 " mnemonic: 'file find' (uses fzf extended mode)
-noremap <Leader>fg :GFiles<CR>
-noremap <Leader>ff :Files<CR>
-" noremap <Leader>ff :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+" noremap <Leader>fg :GFiles<CR>
+" noremap <Leader>ff :Files<CR>
+" noremap <Leader>ff :call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g ""', 'sink': 'e'})<CR>
 
 " mnemonic: 'buffer buffer' (for consistency with leader-ff really)
 noremap <Leader>bb :Buffers<CR>
@@ -169,11 +114,44 @@ nmap s <Plug>(easymotion-s2)
 
 " ArgWrap (turn (1, 2, 3) to multiline or back)
 " https://git.foosoft.net/alex/vim-argwrap for customization options
-noremap <Leader>ww :ArgWrap<CR>
+
+" use ag as grepprg
+if executable('ag')
+  " copilot version
+  " set grepprg=ag\ --nogroup\ --nocolor
+  " set grepformat=%f:%l:%c:%m
+  "
+  " https://blog.kiprosh.com/integrating-the-silver-searcher-with-vims-grepprg/
+  set grepprg=ag\ --vimgrep\ --nogroup\ $*
+  set grepformat=%f:%l:%c:%m
+
+  command! -nargs=* Grep call s:grep_and_open_qf(<q-args>)
+
+  function! s:setup_quickfix_target(winid)
+    " Focus the original window before executing quickfix commands
+    call win_gotoid(a:winid)
+  endfunction
+
+  function! s:grep_and_open_qf(...)
+    let l:current_win = win_getid()
+
+    redir => output
+    silent execute 'grep ' . join(a:000, ' ')
+    redir END
+    copen
+    wincmd J
+
+    augroup QuickfixTarget
+      autocmd!
+      autocmd QuickFixCmdPre * call s:setup_quickfix_target(l:current_win)
+    augroup END 
+  endfunction
+endif
+>>>>>>> origin/master
 
 " ack searches
 noremap <Leader>aa :Ack --actionscript "
-noremap <Leader>aj :Ack --js --coffee "
+noremap <Leader>aj :Ack --js --coffee --ts "
 noremap <Leader>ah :Ack --haml "
 noremap <Leader>ar :Ack --ruby "
 noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
@@ -247,6 +225,9 @@ let g:syntastic_javascript_checkers = ['eslint'] " if array, runs ALL in order
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['python']
 
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["go"] }
 
 let g:syntastic_mode_map = {
     \ "mode": "active",
@@ -288,6 +269,14 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 if &t_Co > 2 || has("gui_running")
   syntax on
+  set guifont=Menlo:h14
+
+	let g:neovide_scale_factor=1.0
+	function! ChangeScaleFactor(delta)
+	  let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
+	endfunction
+	nnoremap <expr><C-=> ChangeScaleFactor(1.10)
+	nnoremap <expr><C--> ChangeScaleFactor(1/1.10)
 endif
 
 " Only do this part when compiled with support for autocommands.
