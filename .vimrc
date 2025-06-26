@@ -112,52 +112,18 @@ noremap <Leader>bb :Buffers<CR>
 " EasyMotion searches
 nmap s <Plug>(easymotion-s2)
 
-" ArgWrap (turn (1, 2, 3) to multiline or back)
-" https://git.foosoft.net/alex/vim-argwrap for customization options
-
-" use ag as grepprg
-if executable('ag')
-  " copilot version
-  " set grepprg=ag\ --nogroup\ --nocolor
-  " set grepformat=%f:%l:%c:%m
-  "
-  " https://blog.kiprosh.com/integrating-the-silver-searcher-with-vims-grepprg/
-  set grepprg=ag\ --vimgrep\ --nogroup\ $*
-  set grepformat=%f:%l:%c:%m
-
-  command! -nargs=* Grep call s:grep_and_open_qf(<q-args>)
-
-  function! s:setup_quickfix_target(winid)
-    " Focus the original window before executing quickfix commands
-    call win_gotoid(a:winid)
-  endfunction
-
-  function! s:grep_and_open_qf(...)
-    let l:current_win = win_getid()
-
-    redir => output
-    silent execute 'grep ' . join(a:000, ' ')
-    redir END
-    copen
-    wincmd J
-
-    augroup QuickfixTarget
-      autocmd!
-      autocmd QuickFixCmdPre * call s:setup_quickfix_target(l:current_win)
-    augroup END 
-  endfunction
-endif
+" ferret config?
 
 " ack searches
-noremap <Leader>aa :Ack --actionscript "
-noremap <Leader>aj :Ack --js --coffee --ts "
-noremap <Leader>ah :Ack --haml "
-noremap <Leader>ar :Ack --ruby "
-noremap <Leader>ac :Ack --clojure -G "\.clj[cs]?$" "
-noremap <Leader>ae :Ack -G "\.erb$" "
-noremap <Leader>as :Ack -G "\.s(a\|c)ss(\.erb)?$" "
-noremap <Leader>am :Ack --markdown "
-noremap <Leader>at :Ack -G "\.tsx?$" "
+noremap <Leader>aa :Ack --actionscript
+noremap <Leader>aj :Ack --js --coffee --ts 
+noremap <Leader>ah :Ack --haml 
+noremap <Leader>ar :Ack --ruby 
+noremap <Leader>ac :Ack --clojure -G \.clj[cs]?$ 
+noremap <Leader>ae :Ack -G \.erb$ 
+noremap <Leader>as :Ack -G \.s(a\|c)ss(\.erb)?$ 
+noremap <Leader>am :Ack --markdown 
+noremap <Leader>at :Ack -G \.tsx?$ 
 
 " also, use ag as the backing app for ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column --path-to-ignore ~/.ignore'
@@ -243,7 +209,7 @@ set foldlevel=20 " no initial folds (TO DO: improve this)
 abbr cl( console.log(
 
 " initial color scheme
-:colorscheme zenburn
+:colorscheme neosolarized
 
 set history=250		" keep 250 lines of command line history
 set ruler		" show the cursor position all the time

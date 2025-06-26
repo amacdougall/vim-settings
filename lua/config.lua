@@ -35,7 +35,7 @@ require("lazy").setup({
   },
   { "jeetsukumaran/vim-buffergator" },
   { "vim-scripts/The-NERD-tree" },
-  { "mileszs/ack.vim" },
+  { "wincent/ferret" },
 
   -- editing
   { "tpope/vim-surround" },
@@ -49,16 +49,33 @@ require("lazy").setup({
   { "vim-scripts/matchit.zip" },
   { "vim-scripts/ruby-matchit" },
 
+  -- color support
+  { "tjdevries/colorbuddy.nvim" },
   -- colors
+  
+  { "phha/zenburn.nvim" },
   { "NLKNguyen/papercolor-theme" },
   { "amacdougall/Birds-of-Paradise-VIM-Theme" },
-  { "amacdougall/Zenburn" },
   { "amacdougall/badwolf" },
   { "amacdougall/inkpot" },
   { "amacdougall/jellybeans.vim" },
   { "amacdougall/vim-javascript" },
   { "amacdougall/vim-pyte" },
-  { "icymind/NeoSolarized" },
+  {
+    "svrana/neosolarized.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("neosolarized").setup({
+        comment_italics = true,
+        background_set = true,
+      })
+      vim.cmd.colorscheme("neosolarized")
+    end,
+    dependencies = {
+      "tjdevries/colorbuddy.nvim",
+    },
+  },
 
   -- completion
   { "ervandew/supertab" },
