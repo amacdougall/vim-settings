@@ -78,7 +78,6 @@ require("lazy").setup({
   },
 
   -- completion
-  { "ervandew/supertab" },
   { "github/copilot.vim" },
 
   -- external
@@ -119,5 +118,9 @@ require("typescript-tools").setup({
 		buf_set_keymap("n", "<Leader>tr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 		-- implementations of current symbol; what you know about that?
 		buf_set_keymap("n", "<Leader>ti", "<cmd>lua vim.lsp.buf.implementations()<CR>", { noremap = true, silent = true })
+    -- show floating diagnostic
+    buf_set_keymap("n", "<Leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+    -- show diagnostics in quickfix list 
+    buf_set_keymap("n", "<Leader>el", "<cmd>lua vim.diagnostic.setqflist()<CR>", { noremap = true, silent = true })
 	end,
 })
