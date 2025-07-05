@@ -212,7 +212,7 @@ set foldlevel=20 " no initial folds (TO DO: improve this)
 abbr cl( console.log(
 
 " initial color scheme
-:colorscheme neosolarized
+:colorscheme chocolate
 
 set history=250		" keep 250 lines of command line history
 set ruler		" show the cursor position all the time
