@@ -65,6 +65,10 @@ nmap <M-C-D-F1> <NOP>
 " file save
 noremap <Leader>fs :w<CR>
 
+" bring up builtin completion on Tab
+inoremap <Tab> <C-n>
+inoremap <S-Tab> <C-p>
+
 " highlight JSX even in .js files
 let g:jsx_ext_required = 0
 
