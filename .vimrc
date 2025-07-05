@@ -48,7 +48,6 @@ set shiftwidth=4
 let mapleader = " "
 
 if has("gui_running")
-    set guioptions=egt
     set guifont=Menlo:h14
 endif
 
