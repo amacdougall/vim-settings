@@ -14,6 +14,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- core
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    lazy = false,
+    build = ":TSUpdate"
+  },
+
   -- typescript
   {
     "pmizio/typescript-tools.nvim",
