@@ -56,6 +56,9 @@ if has("nvim")
   lua require('config')
 end
 
+" handle <D-v> with paste in insert mode
+inoremap <D-v> <C-r>+
+
 " don't pop up help on an accidental F1
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
@@ -80,6 +83,9 @@ let g:buffergator_display_regime = "bufname"
 noremap <Leader><Tab> :BuffergatorOpen<CR>
 " don't add global keymappings beyond the ones I define
 let g:buffergator_suppress_keymaps = 1
+
+" kill current buffer and go to previous
+noremap <Leader>bd :call DeleteFileAndBuffer()<CR>
 
 " neovide scale on +/- keys
 let g:neovide_scale_factor=1.0
@@ -145,10 +151,6 @@ noremap <Leader>sc :lclose<CR>
 noremap <Leader>sn :lnext<CR>
 noremap <Leader>sN :lNext<CR>
 
-" Background color switch
-noremap <Leader>bl :set background=light<CR>
-noremap <Leader>bd :set background=dark<CR>
-
 " let vim-slime use tmux instead of GNU screen
 let g:slime_target = "tmux"
 
@@ -198,7 +200,17 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["go"] }
 
-:command! JSONFormat :execute ':%!python3 -m json.tool' | set filetype=javascript
+" format JSON
+:command! JSONFormat :execute ':%!python3 -m json.tool' | set filetype=json
+
+" delete current file and buffer
+function! DeleteFileAndBuffer()
+  let filename = expand('%')
+  if filename != ''
+    silent! execute 'bp | sp | bn | bd'
+    silent! execute '!rm ' . shellescape(filename)
+  endif
+endfunction
 
 " Useful when adding require lines to JS viewport code.
 :command! -nargs=1 RequireJS :read !require <args> %

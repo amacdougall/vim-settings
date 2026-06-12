@@ -9,5 +9,3 @@ noremap k gk
 
 " add Narvar notes context
 set complete+=k~/projects/narvar/notes/**/*.md
-
-echo 'hi, processed ftplugin/text.vim'
