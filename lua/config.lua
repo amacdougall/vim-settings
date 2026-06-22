@@ -42,6 +42,7 @@ require("lazy").setup({
   { "michaeljsmith/vim-indent-object" },
   { "tpope/vim-repeat" },
   { "vim-scripts/YankRing.vim" },
+  { "sevenc-nanashi/neov-ime.nvim" },
 
   -- navigation within buffer
   { "Lokaltog/vim-easymotion" },
