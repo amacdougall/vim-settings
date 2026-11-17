@@ -307,9 +307,6 @@ else
 
 endif " has("autocmd")
 
-" Markdown syntax highlighting
-let g:markdown_fenced_languages = ['ruby', 'typescript']
-
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.

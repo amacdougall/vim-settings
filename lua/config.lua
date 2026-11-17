@@ -17,9 +17,28 @@ require("lazy").setup({
   -- core
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main", -- requires the tree-sitter CLI (brew install tree-sitter-cli)
     lazy = false,
-    build = ":TSUpdate"
+    build = ":TSUpdate",
+    config = function()
+      local langs = {
+        "markdown", "markdown_inline", "ruby", "javascript", "typescript",
+        "tsx", "python", "bash", "json", "sql", "go", "clojure",
+        "lua", "vim", "vimdoc",
+      }
+      require("nvim-treesitter").install(langs)
+      -- main branch no longer auto-enables highlighting
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          -- huge files (e.g. 40k-line scratch.rb): async parsing leaves the far
+          -- end unhighlighted after a jump, so use regular syntax instead
+          if vim.api.nvim_buf_line_count(args.buf) > 20000 then
+            return
+          end
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
+    end,
   },
 
   -- typescript
@@ -133,3 +152,24 @@ require("typescript-tools").setup({
     buf_set_keymap("n", "<Leader>el", "<cmd>lua vim.diagnostic.setqflist()<CR>", { noremap = true, silent = true })
 	end,
 })
+
+-- markdown highlight overrides, reapplied for whichever colorscheme is active
+local function markdown_overrides()
+  local set = vim.api.nvim_set_hl
+
+  set(0, "@markup.heading.1.markdown", { link = "Statement" })
+  set(0, "@markup.heading.2.markdown", { link = "Function" })
+  set(0, "@markup.heading.3.markdown", { link = "Type" })
+  set(0, "@markup.raw.markdown_inline", { link = "String" })
+  set(0, "@markup.quote.markdown", { link = "String" })
+  -- fenced code with no language tag: body text color; tagged fences get
+  -- their language's own highlighting via injection
+  set(0, "@markup.raw.block.markdown", { link = "Normal" })
+  set(0, "@markup.raw.delimiter.markdown", { link = "Comment" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = markdown_overrides,
+})
+
+vim.cmd.colorscheme("neosolarized")
