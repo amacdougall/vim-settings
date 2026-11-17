@@ -68,9 +68,27 @@ nmap <M-C-D-F1> <NOP>
 " file save
 noremap <Leader>fs :w<CR>
 
-" bring up builtin completion on Tab
-inoremap <Tab> <C-n>
-inoremap <S-Tab> <C-p>
+" Tab is left unmapped so copilot.vim can claim it (it skips <Tab> if already
+" mapped). Keyword completion is still on <C-n>/<C-p>.
+
+" keyword completion sources (:help 'complete'). Vim's default is
+" .,w,b,u,t,i = current buffer, other windows, loaded buffers, unloaded
+" buffers, tags, included files; the last two are the slow ones (the ruby
+" ftplugin also adds gem paths and tags to 'path'/'tags').
+" Uncomment ONE to experiment:
+" set complete=.                  " current buffer only (fastest)
+set complete=.,w,b                " current buffer + other windows + open buffers
+" set complete=.,w,b,u            " ...plus unloaded buffers in the buffer list
+" set complete=.,w,b,t            " ...plus tags (uses 'tags'; ruby adds gem tags)
+" set complete=.,w,b,i            " ...plus files found via 'path'/include (slowest)
+" set complete=.,w,b,k            " ...plus 'dictionary' files (see notes below)
+"
+" Notes as a completion source: markdown.vim used to do
+"   set complete+=k~/projects/narvar/notes/minutes/**/*.md
+" (recursive glob, slow). Cheaper variants, to add to the line above:
+" set complete+=k~/projects/narvar/notes/minutes/*.md     " non-recursive
+" set complete+=s                 " 'thesaurus' files, if you set 'thesaurus'
+" or, in after/ftplugin/markdown.vim only, so other filetypes are unaffected.
 
 " highlight JSX even in .js files
 let g:jsx_ext_required = 0
