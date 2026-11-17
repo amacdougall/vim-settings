@@ -110,13 +110,14 @@ noremap <Leader>fe :FufFile<CR>
 " mnemonic: 'file refresh'
 noremap <Leader>fr :FufRenewCache<CR>
 
-" mnemonic: 'file find' (uses fzf extended mode)
-" noremap <Leader>fg :GFiles<CR>
-" noremap <Leader>ff :Files<CR>
-" noremap <Leader>ff :call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g ""', 'sink': 'e'})<CR>
-
-" mnemonic: 'buffer buffer' (for consistency with leader-ff really)
-noremap <Leader>bb :Buffers<CR>
+" fzf mappings (<Leader>ff, <Leader>bb) live in lua/config.lua for neovim, where
+" fzf.vim is lazy-loaded; plain Vim gets them here.
+if !has("nvim")
+  " mnemonic: 'file find'
+  noremap <Leader>ff :call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g ""', 'sink': 'e'})<CR>
+  " mnemonic: 'buffer buffer' (for consistency with leader-ff really)
+  noremap <Leader>bb :Buffers<CR>
+endif
 
 " EasyMotion searches
 nmap s <Plug>(easymotion-s2)

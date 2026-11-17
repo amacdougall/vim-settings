@@ -52,13 +52,16 @@ require("lazy").setup({
   { "junegunn/fzf" },
   {
     "junegunn/fzf.vim",
+    -- lazy-load on either a key or an ex command, so :Buffers etc. work cold
+    cmd = { "Buffers", "Files", "GFiles", "Ag", "Rg", "Lines", "BLines", "History", "Commands" },
     keys = {
       {
-		  "<Leader>ff",
-		  "<cmd>:call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g \"\"', 'sink': 'e'})<CR>",
-		  desc = "fzf find files",
-	  },
-    }
+        "<Leader>ff",
+        "<cmd>call fzf#run({'source': 'ag --hidden -p ~/.ignore -l -g \"\"', 'sink': 'e'})<CR>",
+        desc = "fzf find files",
+      },
+      { "<Leader>bb", "<cmd>Buffers<CR>", desc = "fzf buffers" },
+    },
   },
   { "jeetsukumaran/vim-buffergator" },
   { "vim-scripts/The-NERD-tree" },
